@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 24
-  productGUID: c89303a10c456420d8b5a3dc637e84ad
+  productGUID: ab7e4c1d4db6b4bfc8e0d8811276f9db
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: RedbeanCongee
+  productName: RedBean
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -905,10 +905,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: ec1adac6-78a7-4715-bf7a-641b442094a6
+  cloudProjectId: 56b3d75e-052a-40ac-a74a-55dc0d15c11e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: RedbeanCongee
+  projectName: RedBean 2024-11-08_22-39-38
   organizationId: ketchupmaster123
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
