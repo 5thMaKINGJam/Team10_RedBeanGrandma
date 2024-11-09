@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BowlScore : MonoBehaviour
 {
-    private int bowlScore = 0;
+    public int bowlScore = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -17,5 +17,10 @@ public class BowlScore : MonoBehaviour
     {
         //if player makes the right food
         
+    }
+
+    public void increaseBowlCount()
+    {
+        bowlScore++;
     }
 }
