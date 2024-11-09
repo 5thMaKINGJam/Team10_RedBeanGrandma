@@ -14,7 +14,7 @@ public class fadeScript : MonoBehaviour
     private float F_time = 1f;
     
     
-    public void Fade(bool Bool, float delay)
+    public void Fade(bool Bool = false, float delay = 0)
     {
         StartCoroutine(FadeWithDelay(Bool, delay));
         
