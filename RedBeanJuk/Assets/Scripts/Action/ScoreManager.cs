@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScoreManager : MonoBehaviour
+{
+    public Cooking cooking;
+    public moveIngredients moveIng;
+    public GameObject addedpot;
+ 
+
+    void addScore() {
+        if (cooking.IsClear(cooking.recipe, moveIng.addedIngredients) == true) {
+            AddObj();
+            Debug.Log("clear");
+        } else {
+            Debug.Log("fail");
+        }
+    }
+
+    void AddObj() {
+        Vector3 addPos = new Vector3(0, 0, 0); //ui 나오면 수정
+        Instantiate(addedpot, addPos, Quaternion.identity);
+    }
+    
+    // Start is called before the first frame update
+    
+}
