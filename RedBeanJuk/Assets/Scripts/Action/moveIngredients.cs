@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 
 public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler 
 {
-    
+    [SerializeField]
+    float dragSpeed = 1.0f;
+
     private RectTransform rectTransform;
     private Vector3 startPosition;
     public List<string> addedIngredients = new List<string>();
@@ -26,7 +28,8 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnDrag(PointerEventData eventData) {
         Debug.Log("OnDrag");
-        rectTransform.anchoredPosition += eventData.delta;
+        
+        rectTransform.anchoredPosition += eventData.delta * dragSpeed;
     }
     public void OnEndDrag(PointerEventData eventData) {
         Debug.Log("OnEndDrag");
