@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler 
 {
-    private void Start() {
+    void Start() {
         Vector3 startPosition = transform.position;
     }
     private RectTransform rectTransform;
@@ -24,12 +24,6 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta;
     }
-
-    private Vector3 = startPosition;
-    private void Start() {
-        startPosition = transform.position;
-    }
-
     public void OnEndDrag(PointerEventData eventData) {
         Debug.Log("OnEndDrag");
         string currentIngName = gameObject.name;
