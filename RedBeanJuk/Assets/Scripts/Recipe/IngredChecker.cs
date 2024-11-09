@@ -83,6 +83,7 @@ public class IngredChecker : MonoBehaviour
         Debug.Log($"ingredPointer : {ingredPointer} recipeCount : {recipeCount}");
         if (ingredPointer >= recipeCount && isSuccess)
         {
+            GameManager.Instance.IncreaseBowl();
             Debug.Log("Success");
         }
         else { Debug.Log("Fail"); }
