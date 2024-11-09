@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public fadeScript FadeScript;
     private int bowlScore = 0;
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     private bool miniGameTime = false;
 
     private bool Success = false;
+    private bool GameOver = false;
 
     public bool MiniGameTime()
     {
@@ -79,14 +81,23 @@ public class GameManager : MonoBehaviour
         //if player succeed in clearing the game, load good ending
             if (GameClear == true && currentStage == 5 )
             {
-                
-                UnityEngine.SceneManagement.SceneManager.LoadScene("_3GoodEnding");
+                GameOver = true;
+                Success = true;
+                FadeScript.Fade(GameOver, 0f);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene1");
             }
             //if player fail to clear the game, load bad ending
             else if (GameClear == false)
-            { 
-                UnityEngine.SceneManagement.SceneManager.LoadScene("_4BadEnding");
+            {
+                GameOver = true;
+                FadeScript.Fade(GameOver, 0f);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene1");
             }
+    }
+
+    public bool success()
+    {
+        return Success;
     }
 
     void ReloadScene()
