@@ -18,4 +18,9 @@ public class PeerSO : ScriptableObject
             return null;
         } 
     }
+
+    public int GetIngredIdx() 
+    {
+        return PeerImg.Count;   
+    }
 }

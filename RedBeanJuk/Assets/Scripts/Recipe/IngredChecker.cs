@@ -42,6 +42,11 @@ public class IngredChecker : MonoBehaviour
         Debug.Log($"recipeCount : {recipeCount}");
     }
 
+    public void OnClickTest(int ingredIdx)
+    {
+        IngredEntered((Define.Ingredient)ingredIdx);
+    }
+
     public void IngredEntered(Define.Ingredient ingred)
     {
         curIngred = ingred;
@@ -81,12 +86,18 @@ public class IngredChecker : MonoBehaviour
     public void OnClickSubmit()
     {
         Debug.Log($"ingredPointer : {ingredPointer} recipeCount : {recipeCount}");
+        
         if (ingredPointer >= recipeCount && isSuccess)
         {
             GameManager.Instance.IncreaseBowl();
+            RecipeManager.ReciManager.OnClickSubmit(true);
             Debug.Log("Success");
         }
-        else { Debug.Log("Fail"); }
+        else 
+        { 
+            Debug.Log("Fail");
+            RecipeManager.ReciManager.OnClickSubmit(false);
+        }
 
         isSuccess = true;
         ingredPointer = 0;
