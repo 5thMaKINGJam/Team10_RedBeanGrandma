@@ -4,36 +4,49 @@ using UnityEngine;
 
 public class DishWashingMiniGame : MonoBehaviour
 {
-    [SerializeField] private GameObject SpaceBar;
+    // [SerializeField] private GameObject SpaceBar;
 
     private int count = 0;
 
-    [SerializeField] private Canvas canvas;
+    // [SerializeField] private Canvas canvas;
+    
+    public GameObject[] Bubbles;
+    public GameObject AlertPanel;
     
     
-    // Start is called before the first frame update
-    void Start()
+
+     private void Start() {
+        StartCoroutine(Alertmsg());
+    }
+    private IEnumerator Alertmsg()
     {
-        SpaceBar.SetActive(false);
+        AlertPanel.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        AlertPanel.SetActive(false);
     }
 
-    
-    // Update is called once per frame
     void Update()
     {
         
+        
         if (true) 
         {
-            SpaceBar.SetActive(true);
+            // SpaceBar.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 count++;
             }
 
+            for (int i=0; i<Bubbles.Length; i++) {
+                if (count == 6 * (i+1)) {
+                    Bubbles[i].SetActive(false);
+                }
+            }
+
             if (count >= 25)
             {
-                SpaceBar.SetActive(false);
-                canvas.enabled = false;
+                // SpaceBar.SetActive(false);
+                // canvas.enabled = false;
             }
         }
     }
