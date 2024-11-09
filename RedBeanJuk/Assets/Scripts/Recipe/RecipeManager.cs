@@ -65,6 +65,7 @@ public class RecipeManager : MonoBehaviour
     private void NextRecipe(int maxLevel, int peerIdx)
     {
         recipeQ = customerData.GetPeerRecipe(maxLevel, peerIdx);
+        Debug.Log("Submit from start");
         OnRecipeAction.Invoke();
 
         List<Ingredient> recipeL = recipeQ.ToList();

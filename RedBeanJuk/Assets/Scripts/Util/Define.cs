@@ -20,7 +20,7 @@ public class Define
         Saealsim,
         Chapssal,
         Jat,
-        Mul,
+        Gotgam,
         Mabssal,
         Pat,
         MaxCount
