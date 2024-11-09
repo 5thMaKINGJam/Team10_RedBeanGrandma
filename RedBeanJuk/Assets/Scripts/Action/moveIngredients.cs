@@ -5,13 +5,16 @@ using UnityEngine.EventSystems;
 
 public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler 
 {
-    void Start() {
-        Vector3 startPosition = transform.position;
-    }
+    
     private RectTransform rectTransform;
+    private Vector3 startPosition;
     public List<string> addedIngredients = new List<string>();
     public float minDis= 0.1f;
     public GameObject pot;
+
+    void Start() {
+        startPosition = transform.position;
+    }
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
     }
@@ -27,13 +30,29 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     public void OnEndDrag(PointerEventData eventData) {
         Debug.Log("OnEndDrag");
         string currentIngName = gameObject.name;
-        if(Vector3.Distance(pot.transform.position, transform.position) < minDis) {
+
+        if (IsOverlapping(rectTransform, pot.GetComponent<RectTransform>())) {
             AddIngredient(currentIngName);
+            Debug.Log("add");
             transform.position = startPosition;
-            // Destroy(gameObject);
         }
+        // if(Vector3.Distance(pot.transform.position, transform.position) < minDis) {
+        //     AddIngredient(currentIngName);
+        //     Debug.Log("add");
+        //     transform.position = startPosition;
+        //     // Destroy(gameObject);
+        // }
     }
 
+    private bool IsOverlapping(RectTransform rectA, RectTransform rectB) {
+        Vector3[] cornersA = new Vector3[4];
+        rectA.GetWorldCorners(cornersA);
+
+        Vector3[] cornersB = new Vector3[4];
+        rectB.GetWorldCorners(cornersB);
+
+        return (cornersA[0].x <cornersB[2].x && cornersA[2].x>cornersB[0].x && cornersA[0].y<cornersB[1].y && cornersA[1].y>cornersB[0].y);
+    }
     public void OnPointerDown(PointerEventData eventData) {
         Debug.Log("OnPointerDown");
     }
