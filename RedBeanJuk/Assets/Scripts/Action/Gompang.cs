@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Gompang : MonoBehaviour
 {
     public GameObject AlertMsg;
+    public GameObject EndPop;
     public GameObject[] Gompangs;
     private KeyCode[] keys = new KeyCode[] {
         KeyCode.G, KeyCode.F, KeyCode.D, KeyCode.F, KeyCode.A, KeyCode.F, KeyCode.C, KeyCode.F
@@ -44,5 +45,6 @@ public class Gompang : MonoBehaviour
     public void EndGame() {
         Debug.Log("end");
         HintSet.SetActive(false);
+        EndPop.SetActive(true);
     }
 }
