@@ -40,6 +40,7 @@ public class PeerManager : MonoBehaviour
                 peerEmotion.sprite = GetImg(face);
             }
         }
+        peerEmotion.SetNativeSize();
     }
 
     private IEnumerator DestroyAfterDelay(GameObject obj, float delay)
@@ -60,6 +61,7 @@ public class PeerManager : MonoBehaviour
         Sprite peerImg = GetImg((int)peer);
         Image imageComponent = clonedObj.GetComponentInChildren<Image>();
         imageComponent.sprite = peerImg;
+        imageComponent.SetNativeSize();
     }
 
     private Sprite GetImg(int ingredIdx)
