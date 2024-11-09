@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class timerTicker : MonoBehaviour
 {
     public Slider timerSlider;
+    public GameObject fill;
     public float sliderTimer = 60.00f;
-    public bool stopTimer = false;
+    [SerializeField] bool stopTimer = false;
     
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,7 @@ public class timerTicker : MonoBehaviour
 
     public void StartTimer()
     {
+        fill.SetActive(true);
         StartCoroutine(StartTheTimerTicker());
     }
 
@@ -31,6 +32,7 @@ public class timerTicker : MonoBehaviour
 
             if (sliderTimer <= 0)
             {
+                EndStage();
                 stopTimer = true;
             }
 
@@ -39,6 +41,12 @@ public class timerTicker : MonoBehaviour
                 timerSlider.value = sliderTimer;
             }
         }
+    }
+
+    private void EndStage()
+    {
+        fill.SetActive(false);
+        GameManager.Instance.EndStage();
     }
     public void StopTimer()
     {

@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,8 +26,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded" + scene.name);
-        Debug.Log("Load mode" + mode);
-        
+        Debug.Log("Load mode" + mode);        
     }
 
     private void OnDisable()
@@ -39,42 +34,25 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private float StageTime = 60f;
-    private float currentTime = 0f;
     private int currentStage = 1;
     private bool GameClear = false;
     
-    
-    private void Start()
+
+    public void EndStage()
     {
-        StartStage();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-        currentTime += Time.deltaTime;
-        
-        
-        if (currentTime >= StageTime)
+        if (bowlScore >= 10)
         {
-            //count how many bowls of juk player made
-            if ( bowlScore >= 10)
-            {
-                Debug.Log("Level Success!");
-                currentStage++;
-                GameClear = true;
-                StartCoroutine(WaitAndReloadScene(3f));
-                LoadNextScene();
-            }
-            else
-            {
-                Debug.Log("Level Fail!");
-                // go to bad ending
-                GameClear = false;
-                LoadNextScene();
-            }
+            Debug.Log("Level Success!");
+            currentStage++;
+            GameClear = true;
+            StartCoroutine(WaitAndReloadScene(3f));
         }
+        else
+        {
+            Debug.Log("Level Fail!");
+            GameClear = false;
+        }
+        LoadNextScene();
     }
 
     IEnumerator WaitAndReloadScene(float waitTime)
@@ -96,18 +74,11 @@ public class GameManager : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene("_4BadEnding");
             }
     }
-    void StartStage()
-    {
-        currentTime = 0f;
-        Debug.Log("Stage" + currentStage + "start");
-        
-    }
 
     void ReloadScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-        StartStage();
     }
 
     public void IncreaseBowl()
