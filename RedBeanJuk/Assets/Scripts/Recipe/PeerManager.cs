@@ -19,7 +19,7 @@ public class PeerManager : MonoBehaviour
             ChangePeerImg(child, isSuccess);
         }
     }
-    public void DelPeerObj(bool isSuccess) //delete first element
+    public void DelPeerObj() //delete first element
     {
         if (peerTable != null && peerTable.childCount > 0)
         {

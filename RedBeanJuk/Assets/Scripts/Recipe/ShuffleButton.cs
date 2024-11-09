@@ -24,7 +24,7 @@ public class ShuffleButton : MonoBehaviour
         }
     }
 
-    public void SuffleIngred()
+    public void ShuffleIngred()
     {
         ShuffleIdx(idx);
         ShuffleBtn();
@@ -32,9 +32,11 @@ public class ShuffleButton : MonoBehaviour
 
     private void ShuffleBtn()
     {
+        Transform child;
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).transform.position = btnPos[idx[i]];
+            child = transform.GetChild(i);
+            child.transform.position = btnPos[idx[i]];
         }
     }
 

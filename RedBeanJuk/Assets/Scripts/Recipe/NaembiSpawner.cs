@@ -4,7 +4,7 @@ public class NaembiSpawner : MonoBehaviour
 {
     [SerializeField] GameObject Naembi;
     private int maxBowl = 10;
-    private int sub;
+    private int add;
     private int vecX;
     private int curBowl;
 
@@ -14,13 +14,13 @@ public class NaembiSpawner : MonoBehaviour
     {
         rectParent= this.gameObject.GetComponentInParent<RectTransform>();
         SpawnNaembi(rectParent);
-        curBowl = maxBowl -1;
+        curBowl = 0;
     }
 
     private void SpawnNaembi(RectTransform rectParent)
     {
-        sub = (int)(rectParent.rect.width / (maxBowl + 2));
-        vecX = (int)(rectParent.rect.width - sub * 3) - 8;
+        add = (int)(rectParent.rect.width / (maxBowl + 2));
+        vecX = 8;// (int)(rectParent.rect.width - add * 3) - 8;
 
         for (int i = 0; i < maxBowl; i++)
         {
@@ -37,17 +37,17 @@ public class NaembiSpawner : MonoBehaviour
             //clondedObj의 x 위치는 vecX
             rectTransform.anchoredPosition = new Vector2(vecX, rectTransform.anchoredPosition.y);
 
-            vecX -= sub;
+            vecX += add;
         }
     }
 
     
     public void ShowNaembi()
     {
-        if (curBowl >= 0)
+        if (curBowl <10)
         {
             rectParent.GetChild(curBowl).gameObject.SetActive(true);
-            curBowl--;
+            curBowl++;
         }
         else { Debug.Log("Max 10!"); }
     }
