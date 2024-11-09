@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
     private int currentStage = 1;
     private bool GameClear = false;
     
-   
     
     private void Start()
     {
@@ -57,14 +56,16 @@ public class GameManager : MonoBehaviour
         currentTime += Time.deltaTime;
         
         
-        if (currentTime >= StageTime )
+        if (currentTime >= StageTime)
         {
             //count how many bowls of juk player made
             if ( bowlScore >= 10)
             {
                 Debug.Log("Level Success!");
                 currentStage++;
+                GameClear = true;
                 StartCoroutine(WaitAndReloadScene(3f));
+                LoadNextScene();
             }
             else
             {
@@ -87,12 +88,12 @@ public class GameManager : MonoBehaviour
         //if player succeed in clearing the game, load good ending
             if (GameClear == true && currentStage == 5 )
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("_3GoodEnding");
             }
             //if player fail to clear the game, load bad ending
             else if (GameClear == false)
             { 
-                UnityEngine.SceneManagement.SceneManager.LoadScene("");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("_4BadEnding");
             }
     }
     void StartStage()
