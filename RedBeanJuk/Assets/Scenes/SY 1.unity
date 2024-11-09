@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 1014024829}
     - target: {fileID: 4750160612979378332, guid: 94d95835cd641a948adb712def6e774a, type: 3}
       propertyPath: dragSpeed
-      value: 3.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4750160613012902215, guid: 94d95835cd641a948adb712def6e774a, type: 3}
       propertyPath: m_IsActive
