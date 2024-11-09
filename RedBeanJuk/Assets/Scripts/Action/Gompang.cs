@@ -36,7 +36,7 @@ public class Gompang : MonoBehaviour
         }
 
         if (index >= Gompangs.Length){
-            Invoke("EndGame", 0.5f);
+            Invoke("EndGame", 0.7f);
         }
         
 

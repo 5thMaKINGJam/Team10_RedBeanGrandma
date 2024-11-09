@@ -8,17 +8,20 @@ public class ReadyStart : MonoBehaviour
 {
     public GameObject startimg;
     public GameObject readyimg;
-    public Material[] mat = new Material[2];
-    private Image background;
+    public GameObject blurimg;
+
+    // public Material[] mat = new Material[2];
+    // private Image background;
     private void Start()
     {
-        background = GetComponent<Image>();
+        // background = GetComponent<Image>();
         StartCoroutine(LoadGame());
     }
     
     private IEnumerator LoadGame() {
         readyimg.SetActive(true);
-        background.material = mat[0];
+        blurimg.SetActive(true);
+        // background.material = mat[0];
 
         yield return new WaitForSeconds(2f);
         startimg.SetActive(true);
@@ -26,6 +29,7 @@ public class ReadyStart : MonoBehaviour
         yield return new WaitForSeconds(1f);
         startimg.SetActive(false);
         readyimg.SetActive(false);
-        background.material = mat[1];
+        blurimg.SetActive(false);
+        // background.material = mat[1];
     }
 }
