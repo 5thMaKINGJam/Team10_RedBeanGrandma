@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class IngredChecker : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class IngredChecker : MonoBehaviour
     private Define.Ingredient curIngred;
     private bool isSuccess = true;
     private int recipeCount = 0;
-    private int delay = 2;
+    private int delay = 1;
 
     public static IngredChecker ingredChecker { get; private set; }
     private ScoreManager scoreManager;
@@ -67,8 +66,6 @@ public class IngredChecker : MonoBehaviour
                 MoveCheck(ingredPointer);
                 ingredPointer++;
 
-                scoreManager.AddObj();
-
                 recipeQ.Dequeue();
             }
             else
@@ -99,6 +96,7 @@ public class IngredChecker : MonoBehaviour
         {
             evalSuccess = true;
             GameManager.Instance.IncreaseBowl();
+            scoreManager.AddObj();
             Debug.Log("Success");
         }
         else

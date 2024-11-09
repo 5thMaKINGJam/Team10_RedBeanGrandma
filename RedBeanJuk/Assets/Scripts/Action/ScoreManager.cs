@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] Vector2Int vector2int = new Vector2Int(603, 275);
     [SerializeField] GameObject Naembi;
-    [SerializeField] RectTransform potTransform;
+    [SerializeField] RectTransform scoreTransform;
     private Vector3 nextpotPos;
 
     private void Start()
@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
         nextpotPos = new Vector3(vector2int.x, vector2int.y, 0);
     }
     public void AddObj() {
-        GameObject obj = Instantiate(Naembi, potTransform);
+        GameObject obj = Instantiate(Naembi, scoreTransform);
         RectTransform rectTransform = obj.GetComponent<RectTransform>();
         obj.SetActive(true);
         if (rectTransform != null) {

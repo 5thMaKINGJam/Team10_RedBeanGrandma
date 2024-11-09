@@ -8,16 +8,9 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] RectTransform ingreidentTable;
     [SerializeField] GameObject ingreidentObj;
     [SerializeField] IngredSO ingredSO;
-    int delaySeconds = 2;
 
     public void DelIngreidentObj()
     {
-        StartCoroutine(DestroyAfterDelay(delaySeconds));
-    }
-
-    private IEnumerator DestroyAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
         foreach (Transform child in ingreidentTable)
         {
             Destroy(child.gameObject);
