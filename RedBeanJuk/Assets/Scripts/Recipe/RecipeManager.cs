@@ -42,7 +42,7 @@ public class RecipeManager : MonoBehaviour
         maxLevel = UnityEngine.Random.Range(0, (int)Ingredient.MaxCount);
     }
 
-    private void MakeOrder()
+    public void MakeOrder()
     {
         int peerIdx = GetPeer();
         NextPeer(peerIdx);

@@ -11,15 +11,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Button onSubmitButton;
 
     [SerializeField] GameObject keyboard;
+    [SerializeField] GameObject dishWash;
 
     int defaultMaxIngred;
     int maxIngred;
     bool isKeyboardActive = false;
+    bool isDishWashActive = false;
 
     private void Awake()
     {
         if (keyboard != null)
             keyboard.SetActive(false);
+        if (dishWash != null)
+            dishWash.SetActive(false);
 
         defaultMaxIngred = (int)Ingredient.MaxCount - 2;
 
@@ -45,8 +49,7 @@ public class LevelManager : MonoBehaviour
             case 4://stage 4 : 2 ~ 8, seol geo ji
                 onSubmitButton.onClick.AddListener(ShuffleTrigger);
                 StartOrder(defaultMaxIngred);
-                Debug.Log("TODO 설거지");
-                //TODO : 설거지
+                isDishWashActive = true;
                 break;
             case 5: //stage 5 : 2 ~ 8, ho rang ee
                 onSubmitButton.onClick.AddListener(ShuffleTrigger);
@@ -69,6 +72,14 @@ public class LevelManager : MonoBehaviour
         shuffleButton.ShuffleIngred();
     }
 
+    public void DishWash()
+    {
+        if (isDishWashActive && dishWash != null)
+        {
+            RecipeManager.ReciManager.DeleteRecipe();
+            dishWash.SetActive(true);
+        }
+    }
     public void KeyBoard()
     {
         if (isKeyboardActive && keyboard != null)
