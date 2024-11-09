@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandler, IDragHandler 
 {
-    [SerializeField]
-    float dragSpeed = 1.0f;
+    [SerializeField]float dragSpeed = 1.0f;
+    [SerializeField] RectTransform bg;
 
     private RectTransform rectTransform;
     private Vector3 startPosition;
@@ -27,13 +26,10 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandl
         transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
-    public void OnDrag(PointerEventData eventData) {
-        Debug.Log("OnDrag");
-        
+    public void OnDrag(PointerEventData eventData) {       
         rectTransform.anchoredPosition += eventData.delta * dragSpeed;
     }
     public void OnEndDrag(PointerEventData eventData) {
-        Debug.Log("OnEndDrag");
         string currentIngName = gameObject.name;
 
         if (IsOverlapping(rectTransform, pot.GetComponent<RectTransform>())) {
@@ -43,8 +39,8 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandl
                 IngredChecker.ingredChecker.IngredEntered(ingred);
             }
         }
-        transform.position = startPosition;
-        transform.localScale = new Vector3(1f, 1f, 1f);
+        rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        rectTransform.anchoredPosition = Vector2.zero;
     }
 
     private bool IsOverlapping(RectTransform rectA, RectTransform rectB) {

@@ -52,7 +52,7 @@ public class CustomerData
     private void PutBaseIngredient(int peer)
     {
         Peer peerEnum = (Peer)peer;
-        recipeQ.Enqueue(Ingredient.Pat);
+        recipeQ.Enqueue(Ingredient.Mabssal);
         recipeQ.Enqueue(peerIngredientMap[peerEnum]);
     }
 

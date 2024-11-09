@@ -18,6 +18,7 @@ public class IngredientImgSetter : MonoBehaviour
         //Define.Ingredient ingredient
         Image image = this.GetComponentInChildren<Image>();
         image.sprite = ingredImg;
+        image.SetNativeSize();
     }
 
     private void SetType(Define.Ingredient ingredient)

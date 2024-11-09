@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+public class SceneManagerEx : MonoBehaviour
 {
     public GameObject[] backgrounds;
     // Start is called before the first frame update

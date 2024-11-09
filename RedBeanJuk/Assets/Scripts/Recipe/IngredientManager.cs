@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Define;
 
 public class IngredientManager : MonoBehaviour
 {
@@ -11,22 +13,28 @@ public class IngredientManager : MonoBehaviour
 
     public void DelIngreidentObj()
     {
-        foreach (Transform child in ingreidentTable)
+        for (int i = 0; i < ingreidentTable.childCount; i++)
         {
-            Destroy(child.gameObject);
+            MoveCheck(i, false);
+            ingreidentTable.GetChild(i).gameObject.SetActive(false);
         }
     }
 
-    public void MakeIngreidentObj(Define.Ingredient ingredient)
+    public void MakeIngreidents(List<Ingredient> recipeL)
     {
-        GameObject clonedObj = Instantiate(ingreidentObj);
-        clonedObj.transform.SetParent(ingreidentTable, false);
-        IngredientImgSetter ingredientImgSetter = clonedObj.GetComponent<IngredientImgSetter>();
+        int ingredCount = recipeL.Count;
+        IngredientImgSetter ingredientImgSetter;
+        Sprite ingredImg;
+        Transform go;
 
-        if (ingredientImgSetter != null)
+        for (int i = 0; i < ingredCount; i++)
         {
-            Sprite ingredImg = GetImg((int)ingredient);
-            ingredientImgSetter.SetIngredient(ingredient, ingredImg);    
+            go = ingreidentTable.GetChild(i);
+            ingredientImgSetter = go.GetComponent<IngredientImgSetter>();
+            ingredImg = GetImg((int)recipeL[i]);
+            Debug.Log($"recipeL[i] {recipeL[i]} ingredImg {ingredImg}");
+            ingredientImgSetter.SetIngredient(recipeL[i], ingredImg);
+            go.gameObject.SetActive(true);
         }
     }
 
@@ -35,10 +43,13 @@ public class IngredientManager : MonoBehaviour
         return ingredSO.GetIngredImg(ingredIdx);
     }
 
-    public void MoveCheck(int ingredIdx)
+    public void MoveCheck(int ingredIdx, bool isActive = true)
     {
         Transform child = ingreidentTable.GetChild(ingredIdx);
         Transform checkChild = child.Find("Check");
-        checkChild.gameObject.SetActive(true);
+        if(isActive)
+            checkChild.gameObject.SetActive(true);
+        else 
+            checkChild.gameObject.SetActive(false);
     }
 }
