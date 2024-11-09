@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IngredChecker : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class IngredChecker : MonoBehaviour
     private Define.Ingredient curIngred;
     private bool isSuccess = true;
     private int recipeCount = 0;
+    private int delay = 2;
 
     public static IngredChecker ingredChecker { get; private set; }
+    private ScoreManager scoreManager;
     private void Awake()
     {
         if (ingredChecker == null)
@@ -22,6 +25,8 @@ public class IngredChecker : MonoBehaviour
 
         RecipeManager.OnRecipeAction -= GetRecipe;
         RecipeManager.OnRecipeAction += GetRecipe;
+
+        scoreManager = this.GetComponent<ScoreManager>();
     }
 
     private void OnDestroy()
@@ -51,7 +56,7 @@ public class IngredChecker : MonoBehaviour
     {
         curIngred = ingred;
 
-        var forCheck= Define.Ingredient.MaxCount;
+        var forCheck = Define.Ingredient.MaxCount;
 
         if (recipeQ.Count > 0)
         {
@@ -61,6 +66,9 @@ public class IngredChecker : MonoBehaviour
             {
                 MoveCheck(ingredPointer);
                 ingredPointer++;
+
+                scoreManager.AddObj();
+
                 recipeQ.Dequeue();
             }
             else
@@ -86,21 +94,30 @@ public class IngredChecker : MonoBehaviour
     public void OnClickSubmit()
     {
         Debug.Log($"ingredPointer : {ingredPointer} recipeCount : {recipeCount}");
-        
+        bool evalSuccess;
         if (ingredPointer >= recipeCount && isSuccess)
         {
+            evalSuccess = true;
             GameManager.Instance.IncreaseBowl();
-            RecipeManager.ReciManager.OnClickSubmit(true);
             Debug.Log("Success");
         }
-        else 
-        { 
+        else
+        {
+            evalSuccess = false;
             Debug.Log("Fail");
-            RecipeManager.ReciManager.OnClickSubmit(false);
         }
+
+        RecipeManager.ReciManager.peerManager.EvalPeerObj(evalSuccess);
+        StartCoroutine(DeleteOrder(evalSuccess, delay));
 
         isSuccess = true;
         ingredPointer = 0;
+    }
+
+    private IEnumerator DeleteOrder(bool evalSuccess, float delay)//2ÃÊ µÚ
+    { 
+        yield return new WaitForSeconds(delay);
+        RecipeManager.ReciManager.OnClickNext(evalSuccess);
     }
 
     private void MoveCheck(int ingredIdx)

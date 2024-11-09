@@ -6,10 +6,12 @@ public class PeerSO : ScriptableObject
 {
     [SerializeField] private List<Sprite> PeerImg;
 
-    public Sprite GetIngredImg(int IngredIdx)
+    public Sprite GetPeerImg(int IngredIdx)
     {
+        Debug.Log($"index : {IngredIdx}");
         if (IngredIdx < PeerImg.Count)
         {
+            Debug.Log($"{IngredIdx}번째 거야!");
             return PeerImg[IngredIdx];
         }
         else
@@ -19,7 +21,7 @@ public class PeerSO : ScriptableObject
         } 
     }
 
-    public int GetIngredIdx() 
+    public int GetPeerIdx() 
     {
         return PeerImg.Count;   
     }

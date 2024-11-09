@@ -7,7 +7,7 @@ using static Define;
 public class RecipeManager : MonoBehaviour
 {
     [SerializeField] IngredientManager ingredientManager;
-    [SerializeField] PeerManager peerManager;
+    public PeerManager peerManager;
     [SerializeField] private int maxLevel;
     private CustomerData customerData = new CustomerData();
 
@@ -27,7 +27,7 @@ public class RecipeManager : MonoBehaviour
         MakeOrder();
     }
 
-    public void OnClickSubmit(bool isSuccess)
+    public void OnClickNext(bool isSuccess)
     {
         DeleteRecipe(isSuccess);
         MakeOrder();

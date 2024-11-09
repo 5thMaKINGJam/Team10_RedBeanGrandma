@@ -8,26 +8,35 @@ public class PeerManager : MonoBehaviour
     [SerializeField] RectTransform peerTable;
     [SerializeField] GameObject peerObj;
     [SerializeField] PeerSO peerSO;
-    int delaySeconds = 2;
+    
+    Transform child;
+
+    public void EvalPeerObj(bool isSuccess)
+    {
+        if (peerTable != null && peerTable.childCount > 0)
+        {
+            child = peerTable.GetChild(0);
+            ChangePeerImg(child, isSuccess);
+        }
+    }
     public void DelPeerObj(bool isSuccess) //delete first element
     {
         if (peerTable != null && peerTable.childCount > 0)
         {
-            Transform child = peerTable.GetChild(0);
-            ChangePeerImg(child, isSuccess);
-            StartCoroutine(DestroyAfterDelay(child.gameObject, delaySeconds));
+            Destroy(child.gameObject);
         }
     }
 
     private void ChangePeerImg(Transform child, bool isSuccess)
     { 
-        Image peerEmotion = child.GetComponent<Image>();
+        Image peerEmotion = child.GetChild(0).GetComponent<Image>();
         int face = 0;
         if (Enum.TryParse(child.name, true, out Define.Peer peer))
         {
             if (!isSuccess)
             {
-                face = (int)peer + (peerSO.GetIngredIdx()/ 2);
+                face = (int)peer + (int)(peerSO.GetPeerIdx()/ 2);
+                Debug.Log($"face : {face}");
                 peerEmotion.sprite = GetImg(face);
             }
         }
@@ -55,6 +64,6 @@ public class PeerManager : MonoBehaviour
 
     private Sprite GetImg(int ingredIdx)
     {
-        return peerSO.GetIngredImg(ingredIdx);
+        return peerSO.GetPeerImg(ingredIdx);
     }
 }
