@@ -36,7 +36,18 @@ public class GameManager : MonoBehaviour
 
     private int currentStage = 1;
     private bool GameClear = false;
+
+    private bool miniGameTime = false;
+
+    public bool MiniGameTime()
+    {
+        return miniGameTime;
+    }
     
+    public int GetStage()
+    {
+        return currentStage;
+    }
 
     public void EndStage()
     {
@@ -77,13 +88,18 @@ public class GameManager : MonoBehaviour
 
     void ReloadScene()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
     }
 
     public void IncreaseBowl()
     {
         bowlScore++;
         Debug.Log($"bowlScore : {bowlScore}");
+    }
+
+    public int BowlScore()
+    {
+        return bowlScore;
     }
 }
