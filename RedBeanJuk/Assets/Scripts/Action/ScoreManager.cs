@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public moveIngredients moveIng;
     public GameObject addedpot;
  
-
+    private Vector3 nextpotPos = new Vector3(156, 77, 0);
     void addScore() {
         if (cooking.IsClear(cooking.recipe, moveIng.addedIngredients) == true) {
             AddObj();
@@ -19,8 +19,13 @@ public class ScoreManager : MonoBehaviour
     }
 
     void AddObj() {
-        Vector3 addPos = new Vector3(0, 0, 0); //ui 나오면 수정
-        Instantiate(addedpot, addPos, Quaternion.identity);
+        Instantiate(addedpot, nextpotPos, Quaternion.identity);
+        nextpotPos.x += 17;
+    }
+
+    private void OnMouseDown() {
+        Debug.Log("check");
+        AddObj();
     }
     
     // Start is called before the first frame update
