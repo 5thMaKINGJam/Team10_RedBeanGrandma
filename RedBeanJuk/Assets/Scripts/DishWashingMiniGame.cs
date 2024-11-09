@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DishWashingMiniGame : MonoBehaviour
 {
+    public GameManager manager;
     private bool StageFour = false;
 
     private int currentStage = GameManager.Instance.GetStage();
