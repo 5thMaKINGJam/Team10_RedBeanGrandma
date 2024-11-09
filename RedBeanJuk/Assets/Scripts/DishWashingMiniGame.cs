@@ -14,7 +14,7 @@ public class DishWashingMiniGame : MonoBehaviour
 
     private int count = 0;
 
-    private bool miniGameTime = GameManager.Instance.MiniGameTime();
+    private bool miniGameTime = false;//GameManager.Instance.MiniGameTime();
     
     // Start is called before the first frame update
     void Start()

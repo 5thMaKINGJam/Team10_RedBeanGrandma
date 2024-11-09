@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ToNextScene : MonoBehaviour
 {
-    public GameManager GameManager;
     [SerializeField] private string nextSceneName;
 
     [SerializeField] private float delay = 10f;
@@ -14,12 +10,13 @@ public class ToNextScene : MonoBehaviour
     private string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
     public fadeScript FadeScript;
 
-    private bool goodEnding = GameManager.Instance.success();
+    //private bool goodEnding = GameManager.Instance.success();
+    bool goodEnding = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        if (sceneName == "Ending Scene 2")
+        if (sceneName == "EndingScene2")
         {
             if (goodEnding == true)
             {
@@ -38,8 +35,4 @@ public class ToNextScene : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
     }
-
-    
-    
-    
 }

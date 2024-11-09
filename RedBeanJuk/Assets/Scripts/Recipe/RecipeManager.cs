@@ -23,7 +23,11 @@ public class RecipeManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
+    }
 
+    public void SetMaxgred(int maxgred)
+    { 
+        maxLevel = maxgred;
         MakeOrder();
     }
 

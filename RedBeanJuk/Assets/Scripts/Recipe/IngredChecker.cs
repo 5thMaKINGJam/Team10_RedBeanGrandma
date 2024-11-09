@@ -19,7 +19,6 @@ public class IngredChecker : MonoBehaviour
         if (ingredChecker == null)
         {
             ingredChecker = this;
-            DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
 

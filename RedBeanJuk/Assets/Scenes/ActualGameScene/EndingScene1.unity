@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0917c00b1846f42028e6f9ed05f26f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Ending Scene 2
+  nextSceneName: EndingScene2
   delay: 10
   FadeScript: {fileID: 71995494}
 --- !u!4 &19755670

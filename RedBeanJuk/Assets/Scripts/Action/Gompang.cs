@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Gompang : MonoBehaviour
 {
@@ -37,14 +33,11 @@ public class Gompang : MonoBehaviour
 
         if (index >= Gompangs.Length){
             Invoke("EndGame", 0.7f);
-        }
-        
-
+        }       
     }
 
     public void EndGame() {
-        Debug.Log("end");
-        HintSet.SetActive(false);
-        EndPop.SetActive(true);
+        GameManager.Instance.StopTime();
+        GameManager.Instance.LoadSuccessEnding();
     }
 }

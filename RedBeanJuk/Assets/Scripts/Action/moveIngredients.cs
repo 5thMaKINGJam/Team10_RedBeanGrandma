@@ -22,18 +22,20 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandl
         rectTransform = GetComponent<RectTransform>();
     }
 
+    public void SetStart(Vector3 rePos)
+    {
+        startPosition = rePos;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
-    public void OnDrag(PointerEventData eventData) {
-        Debug.Log("OnDrag");
-        
+    public void OnDrag(PointerEventData eventData) {       
         rectTransform.anchoredPosition += eventData.delta * dragSpeed;
     }
     public void OnEndDrag(PointerEventData eventData) {
-        Debug.Log("OnEndDrag");
         string currentIngName = gameObject.name;
 
         if (IsOverlapping(rectTransform, pot.GetComponent<RectTransform>())) {
