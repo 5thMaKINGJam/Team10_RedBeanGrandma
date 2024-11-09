@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,21 +6,31 @@ public class hoverOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [SerializeField] private AnimationClip _animationClip;
     public GameObject HoverButton;
+    Animation hoverAnimation;
+    Animator hoverAnimator;
 
+    private void Start()
+    {
+        hoverAnimation = HoverButton.GetComponent<Animation>();
+        hoverAnimator = HoverButton.GetComponent<Animator>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Animation hoverAnimaton = HoverButton.GetComponent<Animation>();
-        if (hoverAnimaton != null)
+        if (hoverAnimation != null)
         {
-            //hoverAnimaton.isHover = true;
+            //hoverAnimator.SetBool("isHover", true);
         }
-        //trigger ¸ØÃã? ´Þ´Þ ¶°´Â °Å? hoverAnim7aton.Play(_animationClip.name);
+
+        //DOTween ½á¼­ this.scale(1.5f, 1.5f, 1.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Animation hoverAnimation = HoverButton.GetComponent<Animation>();
         hoverAnimation.Stop(_animationClip.name);
+        if (hoverAnimation != null)
+        {
+            //hoverAnimator.SetBool("isHover", false);
+        }
     }
 
 }
