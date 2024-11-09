@@ -12,7 +12,8 @@ public class IngredChecker : MonoBehaviour
     private int delay = 1;
 
     public static IngredChecker ingredChecker { get; private set; }
-    private ScoreManager scoreManager;
+    [SerializeField] NaembiSpawner naembispawner;
+
     private void Awake()
     {
         if (ingredChecker == null)
@@ -24,8 +25,6 @@ public class IngredChecker : MonoBehaviour
 
         RecipeManager.OnRecipeAction -= GetRecipe;
         RecipeManager.OnRecipeAction += GetRecipe;
-
-        scoreManager = this.GetComponent<ScoreManager>();
     }
 
     private void OnDestroy()
@@ -96,7 +95,7 @@ public class IngredChecker : MonoBehaviour
         {
             evalSuccess = true;
             GameManager.Instance.IncreaseBowl();
-            scoreManager.AddObj();
+            naembispawner.ShowNaembi();
             Debug.Log("Success");
         }
         else
