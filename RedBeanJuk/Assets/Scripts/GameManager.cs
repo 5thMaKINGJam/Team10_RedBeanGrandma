@@ -109,10 +109,12 @@ public class GameManager : MonoBehaviour
         return GameClear;
     }
 
+    [SerializeField] GameObject startPanel;
     #region loadingScene
 
     IEnumerator WaitAndReloadScene(float waitTime)
     {
+        startPanel.SetActive(true);
         yield return new WaitForSeconds(waitTime);
         LoadNextScene();
     }
