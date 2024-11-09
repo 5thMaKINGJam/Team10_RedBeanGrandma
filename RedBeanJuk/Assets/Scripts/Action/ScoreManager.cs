@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public moveIngredients moveIng;
     public GameObject addedpot;
  
-
+    
     void addScore() {
         if (cooking.IsClear(cooking.recipe, moveIng.addedIngredients) == true) {
             AddObj();
@@ -18,11 +18,25 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public Transform canvasTransform;
+    private Vector3 nextpotPos = new Vector3(603, 275, 0);
     void AddObj() {
-        Vector3 addPos = new Vector3(0, 0, 0); //ui 나오면 수정
-        Instantiate(addedpot, addPos, Quaternion.identity);
+        GameObject obj = Instantiate(addedpot, canvasTransform);
+        RectTransform rectTransform = obj.GetComponent<RectTransform>();
+        obj.SetActive(true);
+        if (rectTransform != null) {
+            rectTransform.anchoredPosition = nextpotPos;
+        }
+        nextpotPos.x += 17;  
     }
-    
-    // Start is called before the first frame update
+
+
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Debug.Log("test");
+            AddObj();
+        }
+        
+    }
     
 }
