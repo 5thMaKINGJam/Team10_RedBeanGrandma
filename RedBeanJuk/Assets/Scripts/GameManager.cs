@@ -52,56 +52,59 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         currentTime += Time.deltaTime;
         
         
-        if (currentTime >= StageTime)
+        if (currentTime >= StageTime )
         {
             //count how many bowls of juk player made
-            if ( true/*bowl score >= 10*/)
+            if ( bowlscore >= 10)
             {
                 Debug.Log("Level Success!");
-                GameClear = true;
-                //go to next scene
-                LoadNextScene();
+                currentStage++;
+                StartCoroutine(WaitAndReloadScene(3f));
             }
             else
             {
                 Debug.Log("Level Fail!");
                 // go to bad ending
                 GameClear = false;
+                LoadNextScene();
             }
         }
     }
 
+    IEnumerator WaitAndReloadScene(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ReloadScene();
+    }
+
     void LoadNextScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DY");
-        /*int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (currentStage < 5)
-        {
-            currentStage++;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            //if player succeed in clearing the game, load good ending
-            if (GameClear == true)
+        //if player succeed in clearing the game, load good ending
+            if (GameClear == true && currentStage == 5 )
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("");
             }
             //if player fail to clear the game, load bad ending
-            else
-            {
+            else if (GameClear == false)
+            { 
                 UnityEngine.SceneManagement.SceneManager.LoadScene("");
-
-        }
-        */
+            }
     }
     void StartStage()
     {
         currentTime = 0f;
         Debug.Log("Stage" + currentStage + "start");
+    }
+
+    void ReloadScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+        StartStage();
+        
     }
 }
