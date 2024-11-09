@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,8 +33,11 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         string currentIngName = gameObject.name;
 
         if (IsOverlapping(rectTransform, pot.GetComponent<RectTransform>())) {
-            AddIngredient(currentIngName);
-            Debug.Log("add");
+            if(Enum.TryParse(currentIngName, true, out Define.Ingredient ingred))
+            {
+                Debug.Log($"{currentIngName}");
+                IngredChecker.ingredChecker.IngredEntered(ingred);
+            }
             transform.position = startPosition;
         }
         // if(Vector3.Distance(pot.transform.position, transform.position) < minDis) {
@@ -55,11 +59,6 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     }
     public void OnPointerDown(PointerEventData eventData) {
         Debug.Log("OnPointerDown");
-    }
-
-    public void AddIngredient(string ingredientName) {
-        addedIngredients.Add(ingredientName);
-        Debug.Log("아이템 추가");
     }
 
     // IDragHandler, IEndDragHandler

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private int bowlScore = 0;
     private void Awake()
     {
         if (Instance == null)
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         if (currentTime >= StageTime )
         {
             //count how many bowls of juk player made
-            if ( bowlscore >= 10)
+            if ( bowlScore >= 10)
             {
                 Debug.Log("Level Success!");
                 currentStage++;
@@ -108,6 +109,9 @@ public class GameManager : MonoBehaviour
         StartStage();
     }
 
-    
-    
+    public void IncreaseBowl()
+    {
+        bowlScore++;
+        Debug.Log($"bowlScore : {bowlScore}");
+    }
 }
