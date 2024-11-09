@@ -18,10 +18,10 @@ public class hoverOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (hoverAnimation != null)
         {
-            //hoverAnimator.SetBool("isHover", true);
+            hoverAnimator.SetBool("isHover", true);
         }
 
-        //DOTween �Ἥ this.scale(1.5f, 1.5f, 1.5f);
+        //DOTween �Ἥ this.scale(1.5f, 1.5f, 1.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -29,7 +29,7 @@ public class hoverOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         hoverAnimation.Stop(_animationClip.name);
         if (hoverAnimation != null)
         {
-            //hoverAnimator.SetBool("isHover", false);
+            hoverAnimator.SetBool("isHover", false);
         }
     }
 
