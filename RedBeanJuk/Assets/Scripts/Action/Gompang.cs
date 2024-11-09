@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,8 @@ public class Gompang : MonoBehaviour
     private KeyCode[] keys = new KeyCode[] {
         KeyCode.G, KeyCode.F, KeyCode.D, KeyCode.F, KeyCode.A, KeyCode.F, KeyCode.C, KeyCode.F
     };
+    public GameObject[] Hints;
+    public GameObject HintSet;
     private int index = 0;
     private void Start() {
         StartCoroutine(Alertmsg());
@@ -25,12 +29,20 @@ public class Gompang : MonoBehaviour
         if (index < Gompangs.Length) {
             if (Input.GetKeyDown(keys[index])) {
                 Gompangs[index].SetActive(false);
+                Hints[index].SetActive(false);
                 index++;
             }
         }
-        if (index == 7) {
-            
+
+        if (index >= Gompangs.Length){
+            Invoke("EndGame", 0.5f);
         }
+        
+
     }
 
+    public void EndGame() {
+        Debug.Log("end");
+        HintSet.SetActive(false);
+    }
 }
