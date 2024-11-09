@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
             case 4://stage 4 : 2 ~ 8, seol geo ji
                 onSubmitButton.onClick.AddListener(ShuffleTrigger);
                 StartOrder(defaultMaxIngred);
+                Debug.Log("TODO 설거지");
                 //TODO : 설거지
                 break;
             case 5: //stage 5 : 2 ~ 8, ho rang ee
@@ -72,6 +73,7 @@ public class LevelManager : MonoBehaviour
     {
         if (isKeyboardActive && keyboard != null)
         {
+            RecipeManager.ReciManager.DeleteRecipe();
             keyboard.SetActive(true);
         }
     }

@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandler, IDragHandler 
 {
-    [SerializeField]
-    float dragSpeed = 1.0f;
+    [SerializeField]float dragSpeed = 1.0f;
+    [SerializeField] RectTransform bg;
 
     private RectTransform rectTransform;
     private Vector3 startPosition;
@@ -20,11 +19,6 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandl
     }
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
-    }
-
-    public void SetStart(Vector3 rePos)
-    {
-        startPosition = rePos;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -45,8 +39,8 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandl
                 IngredChecker.ingredChecker.IngredEntered(ingred);
             }
         }
-        transform.position = startPosition;
-        transform.localScale = new Vector3(1f, 1f, 1f);
+        rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        rectTransform.anchoredPosition = Vector2.zero;
     }
 
     private bool IsOverlapping(RectTransform rectA, RectTransform rectB) {

@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Level Success!");
             currentStage++;
             GameClear = true;
-            if (currentStage < 5) {
-                StartCoroutine(WaitAndReloadScene(3f));
+            if (currentStage < 6) {
+                StartCoroutine(WaitAndReloadScene(2f));
             }
         }
         else
@@ -97,6 +97,12 @@ public class GameManager : MonoBehaviour
             LoadEndingScene();
         }
     }
+
+    public bool GetSuccessOrNot()
+    {
+        return GameClear;
+    }
+
     #region loadingScene
 
     IEnumerator WaitAndReloadScene(float waitTime)
@@ -114,18 +120,7 @@ public class GameManager : MonoBehaviour
     void LoadEndingScene()
     {
         Debug.Log($"LoadEndingScene {currentStage}");
-        //if player succeed in clearing the game, load good ending
-            if (GameClear == true && currentStage >= 6 )
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("_3GoodEnding");
-            }
-            //if player fail to clear the game, load bad ending
-            else if (GameClear == false)
-            {
-                //GameOver = true;
-                //FadeScript.Fade(GameOver, 0f);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene1");
-            }
+        SceneManager.LoadScene("_3Ending");
     }
 
     void LoadNextScene()

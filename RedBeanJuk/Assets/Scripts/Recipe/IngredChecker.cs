@@ -104,16 +104,16 @@ public class IngredChecker : MonoBehaviour
         }
 
         RecipeManager.ReciManager.peerManager.EvalPeerObj(evalSuccess);
-        StartCoroutine(DeleteOrder(evalSuccess, delay));
+        StartCoroutine(DeleteOrder(delay));
 
         isSuccess = true;
         ingredPointer = 0;
     }
 
-    private IEnumerator DeleteOrder(bool evalSuccess, float delay)//2초 뒤
+    private IEnumerator DeleteOrder(float delay)//2초 뒤
     { 
         yield return new WaitForSeconds(delay);
-        RecipeManager.ReciManager.OnClickNext(evalSuccess);
+        RecipeManager.ReciManager.OnClickNext();
     }
 
     private void MoveCheck(int ingredIdx)

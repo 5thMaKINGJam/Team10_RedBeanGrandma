@@ -31,9 +31,9 @@ public class RecipeManager : MonoBehaviour
         MakeOrder();
     }
 
-    public void OnClickNext(bool isSuccess)
+    public void OnClickNext()
     {
-        DeleteRecipe(isSuccess);
+        DeleteRecipe();
         MakeOrder();
     }
 
@@ -54,10 +54,10 @@ public class RecipeManager : MonoBehaviour
         return UnityEngine.Random.Range(0, (int)Peer.MaxCount);
     }
 
-    private void DeleteRecipe(bool isSuccess)
+    public void DeleteRecipe()
     {
         ingredientManager.DelIngreidentObj();
-        peerManager.DelPeerObj(isSuccess);
+        peerManager.DelPeerObj();
     }
 
     private void NextPeer(int peerIdx)
@@ -73,11 +73,7 @@ public class RecipeManager : MonoBehaviour
         OnRecipeAction.Invoke();
 
         List<Ingredient> recipeL = recipeQ.ToList();
-
-        foreach (var ingred in recipeL)
-        {
-            ingredientManager.MakeIngreidentObj(ingred);
-        }
+        ingredientManager.MakeIngreidents(recipeL);
     }
 
     public void MoveCheck(int ingredIdx)
