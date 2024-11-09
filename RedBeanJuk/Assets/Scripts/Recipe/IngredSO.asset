@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4468974dcb19445b7eedb6ea5d0c71, type: 3}
+  m_Name: IngredSO
+  m_EditorClassIdentifier: 
+  IngredImg:
+  - {fileID: 21300000, guid: aa4437e4600b38549acdca7f858813be, type: 3}
+  - {fileID: 21300000, guid: 69d29aea08554ae43bc4d22a3bc53dde, type: 3}
+  - {fileID: 21300000, guid: 5237af30b1b2964419809fa712885c6c, type: 3}
+  - {fileID: 21300000, guid: d88d8900e0802ff4daa7e426166676db, type: 3}
+  - {fileID: 21300000, guid: 3d812b72aa696a243be3b6abca0762b1, type: 3}
+  - {fileID: 21300000, guid: dd444e8a43830f74d9b090881f6eaf7b, type: 3}
+  - {fileID: 21300000, guid: f141056090193a245903cb255973cd56, type: 3}
+  - {fileID: 21300000, guid: f8794405687e69745b94fc7907721ab7, type: 3}
