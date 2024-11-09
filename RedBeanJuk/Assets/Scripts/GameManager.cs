@@ -56,23 +56,23 @@ public class GameManager : MonoBehaviour
         currentTime += Time.deltaTime;
         
         
-        if (currentTime >= StageTime )
-        {
-            //count how many bowls of juk player made
-            if ( bowlscore >= 10)
-            {
-                Debug.Log("Level Success!");
-                currentStage++;
-                StartCoroutine(WaitAndReloadScene(3f));
-            }
-            else
-            {
-                Debug.Log("Level Fail!");
-                // go to bad ending
-                GameClear = false;
-                LoadNextScene();
-            }
-        }
+        // if (currentTime >= StageTime )
+        // {
+        //     //count how many bowls of juk player made
+        //     if ( bowlscore >= 10)
+        //     {
+        //         Debug.Log("Level Success!");
+        //         currentStage++;
+        //         StartCoroutine(WaitAndReloadScene(3f));
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Level Fail!");
+        //         // go to bad ending
+        //         GameClear = false;
+        //         LoadNextScene();
+        //     }
+        // }
     }
 
     IEnumerator WaitAndReloadScene(float waitTime)
