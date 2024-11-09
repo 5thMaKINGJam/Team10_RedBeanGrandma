@@ -24,11 +24,12 @@ public class ReadyStart : MonoBehaviour
         // background.material = mat[0];
 
         yield return new WaitForSeconds(2f);
+        readyimg.SetActive(false);
+        yield return new WaitForSeconds(0.05f);
         startimg.SetActive(true);
 
         yield return new WaitForSeconds(1f);
         startimg.SetActive(false);
-        readyimg.SetActive(false);
         blurimg.SetActive(false);
         // background.material = mat[1];
     }
