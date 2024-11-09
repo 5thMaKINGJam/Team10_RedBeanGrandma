@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int scoreLimit = 5;
+    private int scoreLimit = 10;
     #region Singleton
     public static GameManager Instance;
     private LevelManager levelManager;

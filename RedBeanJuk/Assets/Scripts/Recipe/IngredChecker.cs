@@ -13,6 +13,7 @@ public class IngredChecker : MonoBehaviour
 
     public static IngredChecker ingredChecker { get; private set; }
     [SerializeField] NaembiSpawner naembispawner;
+    [SerializeField] PotStateSetter stateSetter;
 
     private void Awake()
     {
@@ -61,6 +62,7 @@ public class IngredChecker : MonoBehaviour
 
             if (curIngred == recipeQ.Peek())
             {
+                stateSetter.SetBoilingState(1);//fail
                 MoveCheck(ingredPointer);
                 ingredPointer++;
 
@@ -74,6 +76,10 @@ public class IngredChecker : MonoBehaviour
         else
         {
             isSuccess = false;
+        }
+        if (!isSuccess)
+        {
+            stateSetter.SetBoilingState(3);//fail
         }
 
         if (recipeQ.Count >= 0)
@@ -95,11 +101,13 @@ public class IngredChecker : MonoBehaviour
             evalSuccess = true;
             GameManager.Instance.IncreaseBowl();
             naembispawner.ShowNaembi();
+            stateSetter.SetBoilingState(2);//success
             Debug.Log("Success");
         }
         else
         {
             evalSuccess = false;
+            stateSetter.SetBoilingState(3);//fail
             Debug.Log("Fail");
         }
 
@@ -113,6 +121,7 @@ public class IngredChecker : MonoBehaviour
     private IEnumerator DeleteOrder(float delay)//2ÃÊ µÚ
     { 
         yield return new WaitForSeconds(delay);
+        stateSetter.SetBoilingState(0);//none
         RecipeManager.ReciManager.OnClickNext();
     }
 
