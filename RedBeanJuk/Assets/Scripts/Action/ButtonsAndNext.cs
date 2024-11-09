@@ -8,7 +8,7 @@ public class ButtonsAndNext : MonoBehaviour
 {
     public void goTo_1_2_storyScene()
     {
-        SceneManager.LoadScene("_1-2Story");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("_1-2Story");
     }
 
     public void Exit()
