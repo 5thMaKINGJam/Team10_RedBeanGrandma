@@ -43,12 +43,12 @@ public class GameManager : MonoBehaviour
     private int currentStage = 1;
     private bool GameClear = false;
     
-
+   
+    
     private void Start()
     {
         StartStage();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         currentTime = 0f;
         Debug.Log("Stage" + currentStage + "start");
+        
     }
 
     void ReloadScene()
@@ -105,6 +106,8 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
         StartStage();
-        
     }
+
+    
+    
 }
