@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Cooking cooking;
-    public moveIngredients moveIng;
-    public GameObject addedpot;
- 
-    
-    void addScore() {
-        if (cooking.IsClear(cooking.recipe, moveIng.addedIngredients) == true) {
-            AddObj();
-            Debug.Log("clear");
-        } else {
-            Debug.Log("fail");
-        }
-    }
+    [SerializeField] Vector2Int vector2int = new Vector2Int(603, 275);
+    [SerializeField] GameObject Naembi;
+    [SerializeField] RectTransform scoreTransform;
+    private Vector3 nextpotPos;
 
-    public Transform canvasTransform;
-    private Vector3 nextpotPos = new Vector3(603, 275, 0);
-    void AddObj() {
-        GameObject obj = Instantiate(addedpot, canvasTransform);
+    private void Start()
+    {
+        nextpotPos = new Vector3(vector2int.x, vector2int.y, 0);
+    }
+    public void AddObj() {
+        GameObject obj = Instantiate(Naembi, scoreTransform);
         RectTransform rectTransform = obj.GetComponent<RectTransform>();
         obj.SetActive(true);
         if (rectTransform != null) {
@@ -30,13 +23,12 @@ public class ScoreManager : MonoBehaviour
         nextpotPos.x += 17;  
     }
 
-
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             Debug.Log("test");
             AddObj();
-        }
-        
+        }        
     }
     
 }

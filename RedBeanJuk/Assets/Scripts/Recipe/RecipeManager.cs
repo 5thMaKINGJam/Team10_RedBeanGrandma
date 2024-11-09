@@ -7,7 +7,7 @@ using static Define;
 public class RecipeManager : MonoBehaviour
 {
     [SerializeField] IngredientManager ingredientManager;
-    [SerializeField] PeerManager peerManager;
+    public PeerManager peerManager;
     [SerializeField] private int maxLevel;
     private CustomerData customerData = new CustomerData();
 
@@ -27,9 +27,9 @@ public class RecipeManager : MonoBehaviour
         MakeOrder();
     }
 
-    public void OnClickSubmit()
+    public void OnClickNext(bool isSuccess)
     {
-        DeleteRecipe();
+        DeleteRecipe(isSuccess);
         MakeOrder();
     }
 
@@ -50,10 +50,10 @@ public class RecipeManager : MonoBehaviour
         return UnityEngine.Random.Range(0, (int)Peer.MaxCount);
     }
 
-    private void DeleteRecipe()
+    private void DeleteRecipe(bool isSuccess)
     {
         ingredientManager.DelIngreidentObj();
-        peerManager.DelPeerObj();
+        peerManager.DelPeerObj(isSuccess);
     }
 
     private void NextPeer(int peerIdx)
