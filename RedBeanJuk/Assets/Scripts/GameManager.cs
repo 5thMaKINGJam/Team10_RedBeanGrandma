@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     private bool miniGameTime = false;
 
+    private bool Success = false;
+
     public bool MiniGameTime()
     {
         return miniGameTime;
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         //if player succeed in clearing the game, load good ending
             if (GameClear == true && currentStage == 5 )
             {
+                
                 UnityEngine.SceneManagement.SceneManager.LoadScene("_3GoodEnding");
             }
             //if player fail to clear the game, load bad ending

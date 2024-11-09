@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler 
+public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandler, IDragHandler 
 {
     [SerializeField]
     float dragSpeed = 1.0f;
@@ -22,8 +22,9 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void OnBeginDrag(PointerEventData eventData) {
-        Debug.Log("OnBeginDrag");
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -41,14 +42,9 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
                 Debug.Log($"{currentIngName}");
                 IngredChecker.ingredChecker.IngredEntered(ingred);
             }
-            transform.position = startPosition;
         }
-        // if(Vector3.Distance(pot.transform.position, transform.position) < minDis) {
-        //     AddIngredient(currentIngName);
-        //     Debug.Log("add");
-        //     transform.position = startPosition;
-        //     // Destroy(gameObject);
-        // }
+        transform.position = startPosition;
+        transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     private bool IsOverlapping(RectTransform rectA, RectTransform rectB) {
@@ -60,33 +56,4 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
         return (cornersA[0].x <cornersB[2].x && cornersA[2].x>cornersB[0].x && cornersA[0].y<cornersB[1].y && cornersA[1].y>cornersB[0].y);
     }
-    public void OnPointerDown(PointerEventData eventData) {
-        Debug.Log("OnPointerDown");
-    }
-
-    // IDragHandler, IEndDragHandler
-    // public List<string> addedIngredients = new List<string>();
-    // public float minDis= 0.1f;
-    // public GameObject pot;
-    // public void OnDrag(PointerEventData eventData) {
-    //     transform.position = eventData.position;
-    //     Debug.Log("dragging");
-    // }
-
-    // public void AddIngredient(string ingredientName) {
-    //     addedIngredients.Add(ingredientName);
-    //     Debug.Log("아이템 추가");
-    // }
-
-    // public void OnEndDrag(PointerEventData eventData){
-    //     string currentIngName = gameObject.name;
-
-    //     Debug.Log("end drag");
-
-    //     if(Vector3.Distance(pot.transform.position, transform.position) < minDis) {
-    //         AddIngredient(currentIngName);
-    //         Destroy(gameObject);
-    //     }
-    // }
-
 }

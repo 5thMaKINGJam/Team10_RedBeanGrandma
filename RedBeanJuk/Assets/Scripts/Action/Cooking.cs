@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cooking : MonoBehaviour
 {
-    public moveIngredients moveIng;
+    //public moveIngredients moveIng;
     public List<string> recipe;
     public bool IsClear(List<string> recipe, List<string> addedIngredients) {
 
@@ -22,7 +22,7 @@ public class Cooking : MonoBehaviour
     }
 
     void ResetIngredients() {
-        moveIng.addedIngredients.Clear();
+        //moveIng.addedIngredients.Clear();
     }
 
     void ResetRecipe() {
@@ -30,11 +30,11 @@ public class Cooking : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (IsClear(recipe, moveIng.addedIngredients)) {
-            Debug.Log("clear");
-        } else {
-            Debug.Log("fail");
-        }
+            //if (IsClear(recipe, moveIng.addedIngredients)) {
+            //    Debug.Log("clear");
+            //} else {
+            //    Debug.Log("fail");
+            //}
         
         ResetIngredients(); ResetRecipe();    
     }
