@@ -32,4 +32,11 @@ public class IngredientManager : MonoBehaviour
     {
         return ingredSO.GetIngredImg(ingredIdx);
     }
+
+    public void MoveCheck(int ingredIdx)
+    {
+        Transform child = ingreidentTable.GetChild(ingredIdx);
+        Transform checkChild = child.Find("Check");
+        checkChild.gameObject.SetActive(true);
+    }
 }
