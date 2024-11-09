@@ -12,7 +12,11 @@ public class hoverOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         Animation hoverAnimaton = HoverButton.GetComponent<Animation>();
-        hoverAnimaton.Play(_animationClip.name);
+        if (hoverAnimaton != null)
+        {
+            //hoverAnimaton.isHover = true;
+        }
+        //trigger ¸ØÃã? ´Þ´Þ ¶°´Â °Å? hoverAnim7aton.Play(_animationClip.name);
     }
 
     public void OnPointerExit(PointerEventData eventData)

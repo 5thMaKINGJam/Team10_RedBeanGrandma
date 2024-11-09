@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private int bowlScore = 0;
     private void Awake()
     {
         if (Instance == null)
@@ -43,12 +44,12 @@ public class GameManager : MonoBehaviour
     private int currentStage = 1;
     private bool GameClear = false;
     
-
+   
+    
     private void Start()
     {
         StartStage();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -56,23 +57,23 @@ public class GameManager : MonoBehaviour
         currentTime += Time.deltaTime;
         
         
-        // if (currentTime >= StageTime )
-        // {
-        //     //count how many bowls of juk player made
-        //     if ( bowlscore >= 10)
-        //     {
-        //         Debug.Log("Level Success!");
-        //         currentStage++;
-        //         StartCoroutine(WaitAndReloadScene(3f));
-        //     }
-        //     else
-        //     {
-        //         Debug.Log("Level Fail!");
-        //         // go to bad ending
-        //         GameClear = false;
-        //         LoadNextScene();
-        //     }
-        // }
+        if (currentTime >= StageTime )
+        {
+            //count how many bowls of juk player made
+            if ( bowlScore >= 10)
+            {
+                Debug.Log("Level Success!");
+                currentStage++;
+                StartCoroutine(WaitAndReloadScene(3f));
+            }
+            else
+            {
+                Debug.Log("Level Fail!");
+                // go to bad ending
+                GameClear = false;
+                LoadNextScene();
+            }
+        }
     }
 
     IEnumerator WaitAndReloadScene(float waitTime)
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
     {
         currentTime = 0f;
         Debug.Log("Stage" + currentStage + "start");
+        
     }
 
     void ReloadScene()
@@ -105,6 +107,11 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
         StartStage();
-        
+    }
+
+    public void IncreaseBowl()
+    {
+        bowlScore++;
+        Debug.Log($"bowlScore : {bowlScore}");
     }
 }

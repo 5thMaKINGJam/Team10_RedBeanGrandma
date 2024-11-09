@@ -10,8 +10,16 @@ public class IngredChecker : MonoBehaviour
     private bool isSuccess = true;
     private int recipeCount = 0;
 
+    public static IngredChecker ingredChecker { get; private set; }
     private void Awake()
     {
+        if (ingredChecker == null)
+        {
+            ingredChecker = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else { Destroy(gameObject); }
+
         RecipeManager.OnRecipeAction -= GetRecipe;
         RecipeManager.OnRecipeAction += GetRecipe;
     }
@@ -23,7 +31,6 @@ public class IngredChecker : MonoBehaviour
 
     private void GetRecipe()
     {
-        Debug.Log("Submit from start");
         this.recipeQ = RecipeManager.recipeQ;
         Queue<Define.Ingredient> recipeTest = new Queue<Define.Ingredient>(RecipeManager.recipeQ);
         foreach (var recipe in recipeTest)
@@ -35,9 +42,9 @@ public class IngredChecker : MonoBehaviour
         Debug.Log($"recipeCount : {recipeCount}");
     }
 
-    public void OnClickIngred(int ingred)
+    public void IngredEntered(Define.Ingredient ingred)
     {
-        curIngred = (Define.Ingredient)ingred;
+        curIngred = ingred;
 
         var forCheck= Define.Ingredient.MaxCount;
 
@@ -76,6 +83,7 @@ public class IngredChecker : MonoBehaviour
         Debug.Log($"ingredPointer : {ingredPointer} recipeCount : {recipeCount}");
         if (ingredPointer >= recipeCount && isSuccess)
         {
+            GameManager.Instance.IncreaseBowl();
             Debug.Log("Success");
         }
         else { Debug.Log("Fail"); }
