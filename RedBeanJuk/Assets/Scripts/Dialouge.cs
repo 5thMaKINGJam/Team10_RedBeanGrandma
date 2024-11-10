@@ -7,38 +7,23 @@ using Random = UnityEngine.Random;
 public class Dialouge : MonoBehaviour
 {
     [SerializeField] private GameObject[] goodComms;
-
     [SerializeField] private GameObject[] badComms;
     private int index = 0;
 
-    private void Awake()
+
+    public void Comments(bool isBool)
     {
         index = Random.Range(0, 4);
+        GameObject go;
+        go = isBool ? goodComms[index] : badComms[index];
+        StartCoroutine(Wait(go));
+
     }
 
-    
-
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Wait(GameObject go)
     {
-        if (true /*made the right recipe*/)
-        {
-            goodComms[index].SetActive(true);
-            Wait();
-            goodComms[index].SetActive(false);
-            
-        }
-        else
-        {
-            badComms[index].SetActive(true);
-            Wait();
-            badComms[index].SetActive(false);
-        }
-        index = Random.Range(0, 4);
-    }
-
-    private IEnumerator Wait()
-    {
+        go.SetActive(true);
         yield return new WaitForSeconds(1f);
+        go.SetActive(false);
     }
 }
