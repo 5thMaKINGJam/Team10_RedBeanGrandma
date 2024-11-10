@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader_tuto2 : MonoBehaviour
 {
     public void LoadScene() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial_howto");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("_2GameScene");
     }
 }
