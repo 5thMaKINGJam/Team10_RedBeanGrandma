@@ -145,4 +145,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
     #endregion
+
+    private string sceneName;
+
+    
 }

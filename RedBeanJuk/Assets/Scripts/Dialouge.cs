@@ -16,6 +16,15 @@ public class Dialouge : MonoBehaviour
         index = Random.Range(0, 4);
         GameObject go;
         go = isBool ? goodComms[index] : badComms[index];
+
+        if (go == goodComms[index])
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Success);
+        }
+        else if (go == badComms[index])
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.failIngrediant);
+        }
         StartCoroutine(Wait(go));
 
     }

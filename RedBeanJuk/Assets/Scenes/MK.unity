@@ -239,6 +239,7 @@ MonoBehaviour:
   fill: {fileID: 2087865229}
   sliderTimer: 60
   stopTimer: 0
+  finalManager: {fileID: 0}
 --- !u!4 &521363500
 Transform:
   m_ObjectHideFlags: 0
@@ -344,6 +345,60 @@ RectTransform:
   m_AnchoredPosition: {x: 6.092, y: 0}
   m_SizeDelta: {x: 147.816, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &791638858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791638860}
+  - component: {fileID: 791638859}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &791638859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791638858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f09466e31f2146ab8e6aaee06fed144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 04547728812b04ef48b37df01fae4e60, type: 3}
+  bgmVolume: 0.2
+  sfxClip:
+  - {fileID: 8300000, guid: 10ce52e03239145e191df98790ca7c3d, type: 3}
+  - {fileID: 8300000, guid: 573bf39164a624fc1ab44f7ba7eda01e, type: 3}
+  - {fileID: 8300000, guid: a5ef72c1eba434e85b5756c0df1b1a1a, type: 3}
+  - {fileID: 8300000, guid: 2a6769492adf442c98cf00c1795340f5, type: 3}
+  - {fileID: 8300000, guid: 416392d4075954d68a7b816a765d7b05, type: 3}
+  sfxVolume: 0.5
+  channels: 15
+--- !u!4 &791638860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791638858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 680.00604, y: 631.77423, z: 2.5555186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1505833897
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521d47753e864a41b2342432dddc758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeScript: {fileID: 0}
+  scoreLimit: 10
+  timeTicker: {fileID: 0}
+  background: {fileID: 0}
+  startPanel: {fileID: 0}
 --- !u!4 &1595998448
 Transform:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ public class IngredChecker : MonoBehaviour
 
     public void IngredEntered(Define.Ingredient ingred)
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.addIngrediant);
         curIngred = ingred;
 
         var forCheck = Define.Ingredient.MaxCount;
@@ -114,7 +115,7 @@ public class IngredChecker : MonoBehaviour
         ingredPointer = 0;
     }
 
-    private IEnumerator DeleteOrder(float delay)//2ÃÊ µÚ
+    private IEnumerator DeleteOrder(float delay)//2ï¿½ï¿½ ï¿½ï¿½
     {
         yield return new WaitForSeconds(delay);
 
