@@ -23,7 +23,7 @@ public class ReadyStart : MonoBehaviour
         blurimg.SetActive(true);
         // background.material = mat[0];
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         readyimg.SetActive(false);
         yield return new WaitForSeconds(0.05f);
         startimg.SetActive(true);
@@ -32,5 +32,6 @@ public class ReadyStart : MonoBehaviour
         startimg.SetActive(false);
         blurimg.SetActive(false);
         // background.material = mat[1];
+        this.gameObject.SetActive(false);
     }
 }
