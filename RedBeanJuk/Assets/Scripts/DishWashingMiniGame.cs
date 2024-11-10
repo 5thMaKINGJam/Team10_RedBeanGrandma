@@ -28,7 +28,7 @@ public class DishWashingMiniGame : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             count++;
             foreach (var bubble in Bubbles)
@@ -36,7 +36,7 @@ public class DishWashingMiniGame : MonoBehaviour
             //Bubbles들이 KeyDown일 때는 scale 1.2로 커지고, KeyUp일 때나 평상시에는 scale 1임
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.A))
         {
             foreach (var bubble in Bubbles)
                 bubble.transform.localScale = Vector3.one; // 거품 크기 원래대로 (1배)
@@ -52,8 +52,12 @@ public class DishWashingMiniGame : MonoBehaviour
 
         if (count >= 8*BubbleLength)
         {
-            RecipeManager.ReciManager.MakeOrder();
             this.gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        RecipeManager.ReciManager.MakeOrder();
     }
 }

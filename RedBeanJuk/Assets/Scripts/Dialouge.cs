@@ -30,9 +30,9 @@ public class Dialouge : MonoBehaviour
         }
         else
         {
-            badComms[index].SetActive(true);
-            Wait();
-            badComms[index].SetActive(false);
+            //badComms[index].SetActive(true);
+            //Wait();
+            //badComms[index].SetActive(false);
         }
         index = Random.Range(0, 4);
     }

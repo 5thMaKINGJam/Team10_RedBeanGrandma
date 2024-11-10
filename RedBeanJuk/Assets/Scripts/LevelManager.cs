@@ -76,7 +76,6 @@ public class LevelManager : MonoBehaviour
     {
         if (isDishWashActive && dishWash != null)
         {
-            RecipeManager.ReciManager.DeleteRecipe();
             dishWash.SetActive(true);
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,9 +32,29 @@ public class RecipeManager : MonoBehaviour
         MakeOrder();
     }
 
+    private bool isStop=false;
     public void OnClickNext()
     {
         DeleteRecipe();
+        if (isStop)
+        {
+            StartCoroutine(WaitAndMakeOrder());
+        }
+        else
+        {
+            MakeOrder();
+        }
+    }
+
+    public void SetStop(bool stop)
+    {
+        isStop = stop;
+    }
+
+    private IEnumerator WaitAndMakeOrder()
+    {
+        // isStop이 false가 될 때까지 대기
+        yield return new WaitUntil(() => !isStop);
         MakeOrder();
     }
 

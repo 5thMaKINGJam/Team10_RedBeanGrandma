@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int scoreLimit = 10;
+    private int scoreLimit = 2;
     #region Singleton
     public static GameManager Instance;
     private LevelManager levelManager;
@@ -63,10 +63,6 @@ public class GameManager : MonoBehaviour
         {
             levelManager.KeyBoard();
         }
-        else if (bowlScore == (int)scoreLimit / 2)
-        { 
-            levelManager.DishWash();
-        }
     }
 
     public int BowlScore()
@@ -74,6 +70,11 @@ public class GameManager : MonoBehaviour
         return bowlScore;
     }
     #endregion
+
+    public void DishWash()
+    {
+        levelManager.DishWash();
+    }
 
     private static int currentStage = 1;
 

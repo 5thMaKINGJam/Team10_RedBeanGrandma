@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class IngredChecker : MonoBehaviour
@@ -112,6 +114,7 @@ public class IngredChecker : MonoBehaviour
         }
 
         RecipeManager.ReciManager.peerManager.EvalPeerObj(evalSuccess);
+
         StartCoroutine(DeleteOrder(delay));
 
         isSuccess = true;
@@ -122,6 +125,12 @@ public class IngredChecker : MonoBehaviour
     { 
         yield return new WaitForSeconds(delay);
         stateSetter.SetBoilingState(0);//none
+
+        int bowlScore = GameManager.Instance.BowlScore();
+        int stage = GameManager.Instance.GetStage();
+        if (bowlScore == 2 && stage == 4)
+            RecipeManager.ReciManager.SetStop(true);
+
         RecipeManager.ReciManager.OnClickNext();
     }
 
