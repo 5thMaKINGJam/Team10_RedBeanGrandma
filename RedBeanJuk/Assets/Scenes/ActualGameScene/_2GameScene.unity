@@ -3400,7 +3400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521d47753e864a41b2342432dddc758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreLimit: 6
+  scoreLimit: 7
   timeTicker: {fileID: 1388396651}
   background: {fileID: 566471252}
   startPanel: {fileID: 985323188}

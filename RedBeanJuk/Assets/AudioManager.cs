@@ -34,8 +34,11 @@ public class AudioManager : MonoBehaviour
         Init();
         PlayBGM(true);
     }
-    
-   
+
+    private void OnEnable()
+    {
+        PlayBGM(true);
+    }
 
     public enum Sfx
     {
