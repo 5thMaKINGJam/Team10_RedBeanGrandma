@@ -39,8 +39,8 @@ public class AudioManager : MonoBehaviour
 
     public enum Sfx
     {
-        addIngrediant, failIngrediant, Tiger, EndingFuss, Success
-        
+        addIngrediant, failIngrediant, EndingFuss, Success, Tiger
+
     }
     
     
@@ -83,6 +83,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySfx(Sfx sfx)
     {
+        Debug.Log("asdfasdfasdfasdfsdf"+(int)sfx);
         for (int index = 0; index < sfxPlayer.Length; index++)
         {
             int loopIndex = (index + channelIndex) % sfxPlayer.Length;

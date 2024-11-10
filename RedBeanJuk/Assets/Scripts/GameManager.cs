@@ -59,16 +59,6 @@ public class GameManager : MonoBehaviour
     public int IncreaseBowl()
     {
         bowlScore++;
-        Debug.Log($"bowlScore : {bowlScore}");
-        if (bowlScore == scoreLimit)
-        {
-            Debug.Log("hi");
-            //levelManager.KeyBoard();
-        }
-        else if (bowlScore == (int)scoreLimit / 2)
-        { 
-            //levelManager.DishWash();
-        }
         return bowlScore;
     }
 
@@ -113,7 +103,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Level Fail!");
                 GameClear = false;
-                LoadEndingScene();
+                LoadBadEndingScene();
             }
         }
     }
@@ -133,9 +123,14 @@ public class GameManager : MonoBehaviour
         LoadNextScene();
     }
 
+    void LoadBadEndingScene()
+    {
+        currentStage = 0;
+        SceneManager.LoadScene("_4Ending");
+    }
     void LoadEndingScene()
     {
-        Debug.Log($"LoadEndingScene {currentStage}");
+        currentStage = 0;
         SceneManager.LoadScene("_3Ending");
     }
 

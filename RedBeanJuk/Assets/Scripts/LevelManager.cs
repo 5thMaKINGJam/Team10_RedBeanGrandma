@@ -10,9 +10,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] ShuffleButton shuffleButton;
     [SerializeField] Button onSubmitButton;
 
-    [SerializeField] GameObject keyboard;
-    [SerializeField] GameObject dishWash;
-
     int defaultMaxIngred;
     int maxIngred;
     bool isKeyboardActive = false;
@@ -20,11 +17,6 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if (keyboard != null)
-            keyboard.SetActive(false);
-        if (dishWash != null)
-            dishWash.SetActive(false);
-
         defaultMaxIngred = (int)Ingredient.MaxCount - 2;
 
         isKeyboardActive = false;
@@ -69,22 +61,5 @@ public class LevelManager : MonoBehaviour
     private void ShuffleTrigger()
     {
         shuffleButton.ShuffleIngred();
-    }
-
-    public void DishWash()
-    {
-        if (isDishWashActive && dishWash != null)
-        {
-            //RecipeManager.ReciManager.DeleteRecipe();
-            dishWash.SetActive(true);
-        }
-    }
-    public void KeyBoard()
-    {
-        if (isKeyboardActive && keyboard != null)
-        {
-            //RecipeManager.ReciManager.DeleteRecipe();
-            keyboard.SetActive(true);
-        }
     }
 }
