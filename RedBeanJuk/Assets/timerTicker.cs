@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class timerTicker : MonoBehaviour
 {
-    private static float InitsliderTimer = 50.00f;
-    private float sliderTimer;
+    
+    public float sliderTimer =60f;
     public Slider timerSlider;
     public GameObject fill;
     public GameObject[] good;
@@ -15,7 +15,6 @@ public class timerTicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sliderTimer = InitsliderTimer;
         timerSlider.maxValue = sliderTimer;
         timerSlider.value = sliderTimer;
         StartTimer();
