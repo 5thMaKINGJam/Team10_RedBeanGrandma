@@ -208,3 +208,7 @@ ENV/
 .vscode/
 *.swp
 *.swo
+RedBeanJuk/Assets/PeerHover.cs.meta
+RedBeanJuk/Assets/Prefab/Scripts/Action/ScoreManager.cs.meta
+RedBeanJuk/Assets/Prefab/Scripts/BowlScore.cs.meta
+RedBeanJuk/Assets/SceneLoader_tuto2.cs.meta
