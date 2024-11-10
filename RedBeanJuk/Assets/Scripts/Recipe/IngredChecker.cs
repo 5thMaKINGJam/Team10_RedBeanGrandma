@@ -89,7 +89,20 @@ public class IngredChecker : MonoBehaviour
     int bowlScore = 0 ;
     public void OnClickSubmit()
     {
-        bool evalSuccess=false;
+        StartCoroutine(HoldSubmit());
+    }
+
+    private IEnumerator HoldSubmit()
+    {
+        while (true)
+        {
+            EvalSubmit();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+    private void EvalSubmit()
+    {
+        bool evalSuccess = false;
         if (ingredPointer >= recipeCount && isSuccess)
         {
             evalSuccess = true;

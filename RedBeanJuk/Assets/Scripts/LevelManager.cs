@@ -37,23 +37,23 @@ public class LevelManager : MonoBehaviour
         switch (currentStage)
         {
             case 1://stage1 : 2 ~ 5
-                StartOrder();
+                StartOrder(3);
                 break;
             case 2://stage2 : 2 ~ 8
-                StartOrder(defaultMaxIngred);
+                StartOrder(4);
                 break;
             case 3://stage3 : 2 ~ 8, mix random
                 onSubmitButton.onClick.AddListener(ShuffleTrigger);
-                StartOrder(defaultMaxIngred);
+                StartOrder(5);
                 break;
             case 4://stage 4 : 2 ~ 8, seol geo ji
                 onSubmitButton.onClick.AddListener(ShuffleTrigger);
-                StartOrder(defaultMaxIngred);
+                StartOrder(6);
                 isDishWashActive = true;
                 break;
             case 5: //stage 5 : 2 ~ 8, ho rang ee
                 onSubmitButton.onClick.AddListener(ShuffleTrigger);
-                StartOrder(defaultMaxIngred);
+                StartOrder(6);
                 isKeyboardActive = true;
                 break;
 

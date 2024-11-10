@@ -243,7 +243,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fec41ada4e84e82499d927a473741572, type: 3}
   - {fileID: 21300000, guid: d649d1588ec383e4eac381e91408b676, type: 3}
   EndingImg: {fileID: 1337096520}
-  isHappy: 1
+  isHappy: 0
   initialDisplayTime: 2
   fadeDuration: 1
   postFadeWaitTime: 1
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fec41ada4e84e82499d927a473741572, type: 3}
   - {fileID: 21300000, guid: d649d1588ec383e4eac381e91408b676, type: 3}
   EndingImg: {fileID: 1797330025}
-  isHappy: 0
+  isHappy: 1
   initialDisplayTime: 2
   fadeDuration: 1
   postFadeWaitTime: 1

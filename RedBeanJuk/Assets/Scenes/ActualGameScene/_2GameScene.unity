@@ -483,7 +483,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5fad64127dc09457080d3e33d9709f8a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.559
+  m_Volume: 0.532
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1061,7 +1061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 420441151}
   fill: {fileID: 1011824714}
-  sliderTimer: 15
   good: []
   ending: {fileID: 0}
   stopTimer: 0
@@ -3506,7 +3505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521d47753e864a41b2342432dddc758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreLimit: 1
+  scoreLimit: 9
   timeTicker: {fileID: 1388396651}
   background: {fileID: 566471252}
   startPanel: {fileID: 985323188}
@@ -5285,7 +5284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

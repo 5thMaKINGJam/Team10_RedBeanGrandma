@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class timerTicker : MonoBehaviour
 {
+    private static float InitsliderTimer = 50.00f;
+    private float sliderTimer;
     public Slider timerSlider;
     public GameObject fill;
-    public float sliderTimer = 10.00f;
     public GameObject[] good;
     public GameObject ending;
     [SerializeField] bool stopTimer = false;
@@ -14,6 +15,7 @@ public class timerTicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sliderTimer = InitsliderTimer;
         timerSlider.maxValue = sliderTimer;
         timerSlider.value = sliderTimer;
         StartTimer();
@@ -54,6 +56,7 @@ public class timerTicker : MonoBehaviour
             { 
                 child.SetActive(false);
             }
+            AudioManager.instance.PlayBGM(false);
             ending.SetActive(true);
         }
         else 
