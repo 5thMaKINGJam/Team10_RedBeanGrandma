@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int scoreLimit = 10;
+    public int scoreLimit = 10;
     #region Singleton
     public static GameManager Instance;
     private LevelManager levelManager;
@@ -84,9 +84,9 @@ public class GameManager : MonoBehaviour
 
     private bool GameClear = false;
 
-    public void EndStage()
+    public void EndStage(bool isSuccess)
     {
-        if (bowlScore >= scoreLimit)
+        if (isSuccess)
         {
             Debug.Log("Level Success!");
             currentStage++;

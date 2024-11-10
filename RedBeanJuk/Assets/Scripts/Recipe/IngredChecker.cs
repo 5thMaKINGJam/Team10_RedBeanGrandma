@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class IngredChecker : MonoBehaviour
@@ -14,6 +15,7 @@ public class IngredChecker : MonoBehaviour
     public static IngredChecker ingredChecker { get; private set; }
     [SerializeField] NaembiSpawner naembispawner;
     [SerializeField] PotStateSetter stateSetter;
+    [SerializeField] Dialouge dialouge;
 
     private void Awake()
     {
@@ -92,6 +94,7 @@ public class IngredChecker : MonoBehaviour
         }
     }
 
+    int bowlScore = 0 ;
     public void OnClickSubmit()
     {
         Debug.Log($"ingredPointer : {ingredPointer} recipeCount : {recipeCount}");
@@ -112,6 +115,9 @@ public class IngredChecker : MonoBehaviour
         }
 
         RecipeManager.ReciManager.peerManager.EvalPeerObj(evalSuccess);
+        dialouge.Comments(evalSuccess);
+
+        bowlScore = GameManager.Instance.BowlScore();
         StartCoroutine(DeleteOrder(delay));
 
         isSuccess = true;
@@ -119,10 +125,18 @@ public class IngredChecker : MonoBehaviour
     }
 
     private IEnumerator DeleteOrder(float delay)//2ÃÊ µÚ
-    { 
+    {
         yield return new WaitForSeconds(delay);
-        stateSetter.SetBoilingState(0);//none
-        RecipeManager.ReciManager.OnClickNext();
+
+        if (bowlScore > GameManager.Instance.scoreLimit)
+        {
+            GameManager.Instance.EndStage(true);
+        }
+        else
+        {
+            stateSetter.SetBoilingState(0);//none
+            RecipeManager.ReciManager.OnClickNext();
+        }
     }
 
     private void MoveCheck(int ingredIdx)
