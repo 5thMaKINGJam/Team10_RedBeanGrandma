@@ -83,22 +83,12 @@ public class IngredChecker : MonoBehaviour
         {
             stateSetter.SetBoilingState(3);//fail
         }
-
-        if (recipeQ.Count >= 0)
-        {
-            Debug.Log($"peek : {forCheck} curIngred : {curIngred} ingredPointer : {ingredPointer} isSuccess : {isSuccess}");
-        }
-        else
-        {
-            Debug.Log($"peek : Nothing curIngred : {curIngred} ingredPointer : {ingredPointer} isSuccess : {isSuccess}");
-        }
     }
 
     int bowlScore = 0 ;
     public void OnClickSubmit()
     {
-        Debug.Log($"ingredPointer : {ingredPointer} recipeCount : {recipeCount}");
-        bool evalSuccess;
+        bool evalSuccess=false;
         if (ingredPointer >= recipeCount && isSuccess)
         {
             evalSuccess = true;

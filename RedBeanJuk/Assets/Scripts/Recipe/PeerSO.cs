@@ -8,10 +8,8 @@ public class PeerSO : ScriptableObject
 
     public Sprite GetPeerImg(int IngredIdx)
     {
-        Debug.Log($"index : {IngredIdx}");
         if (IngredIdx < PeerImg.Count)
         {
-            Debug.Log($"{IngredIdx}번째 거야!");
             return PeerImg[IngredIdx];
         }
         else

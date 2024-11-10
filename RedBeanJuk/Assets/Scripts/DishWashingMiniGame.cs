@@ -10,9 +10,6 @@ public class DishWashingMiniGame : MonoBehaviour
     private int count = 0;
     private int BubbleLength;
 
-
-
-
     private void Start() {
         BubbleLength = Bubbles.Length;
         StartCoroutine(Alertmsg());
@@ -54,6 +51,7 @@ public class DishWashingMiniGame : MonoBehaviour
         {
             RecipeManager.ReciManager.MakeOrder();
             this.gameObject.SetActive(false);
+            return;
         }
     }
 }

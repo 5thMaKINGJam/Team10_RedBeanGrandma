@@ -48,9 +48,9 @@ public class timerTicker : MonoBehaviour
         fill.SetActive(false);
         GameManager.Instance.EndStage(false);
     }
-    public void StopTimer()
+    public void StopTimer(bool isStop)
     {
-        stopTimer = true;
+        stopTimer = isStop;
     }
 }
 
