@@ -8,6 +8,7 @@ public class timerTicker : MonoBehaviour
     public GameObject fill;
     public float sliderTimer = 60.00f;
     [SerializeField] bool stopTimer = false;
+    [SerializeField] FinalManager finalManager;
     
     // Start is called before the first frame update
     void Start()
