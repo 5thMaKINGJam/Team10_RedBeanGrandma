@@ -36,10 +36,10 @@ public class EndingManager : MonoBehaviour
         Endpop.SetActive(true);
         // 1. 초기 엔딩 이미지 표시 시간만큼 대기
         yield return new WaitForSeconds(initialDisplayTime);
-        
+        Endpop.SetActive(false);
         // 2. 페이드 아웃 효과 적용
         yield return StartCoroutine(FadeImage(EndingImg, 1f, 0f, fadeDuration));
-        Endpop.SetActive(false);
+
         // 3. 페이드 아웃 후 대기 시간만큼 대기
         yield return new WaitForSeconds(postFadeWaitTime);
 
