@@ -6,9 +6,10 @@ public class timerTicker : MonoBehaviour
 {
     public Slider timerSlider;
     public GameObject fill;
-    public float sliderTimer = 60.00f;
+    public float sliderTimer = 10.00f;
+    public GameObject[] good;
+    public GameObject ending;
     [SerializeField] bool stopTimer = false;
-    [SerializeField] FinalManager finalManager;
     
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,18 @@ public class timerTicker : MonoBehaviour
     private void EndStage()
     {
         fill.SetActive(false);
-        GameManager.Instance.EndStage(false);
+        if (good != null)
+        {
+            foreach (var child in good)
+            { 
+                child.SetActive(false);
+            }
+            ending.SetActive(true);
+        }
+        else 
+        {
+            GameManager.Instance.EndStage(false);
+        }
     }
     public void StopTimer(bool isStop)
     {

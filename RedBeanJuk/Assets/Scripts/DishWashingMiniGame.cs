@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class DishWashingMiniGame : MonoBehaviour
@@ -6,6 +7,7 @@ public class DishWashingMiniGame : MonoBehaviour
 
     public GameObject[] Bubbles;
     public GameObject AlertPanel;
+    public GameObject secondTest;
 
     private int count = 0;
     private int BubbleLength;
@@ -15,6 +17,7 @@ public class DishWashingMiniGame : MonoBehaviour
         StartCoroutine(Alertmsg());
 
     }
+
     private IEnumerator Alertmsg()
     {
         AlertPanel.SetActive(true);
@@ -30,6 +33,7 @@ public class DishWashingMiniGame : MonoBehaviour
             count++;
             foreach (var bubble in Bubbles)
                 bubble.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            BubblePop();
             //Bubbles들이 KeyDown일 때는 scale 1.2로 커지고, KeyUp일 때나 평상시에는 scale 1임
         }
 
@@ -47,11 +51,15 @@ public class DishWashingMiniGame : MonoBehaviour
             }
         }
 
-        if (count >= 8*BubbleLength)
+        
+    }
+
+    private void BubblePop()
+    {
+        if (count >= 8 * BubbleLength)
         {
-            RecipeManager.ReciManager.MakeOrder();
+            secondTest.SetActive(true);
             this.gameObject.SetActive(false);
-            return;
         }
     }
 }

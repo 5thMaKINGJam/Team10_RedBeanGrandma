@@ -6,6 +6,9 @@ public class Gompang : MonoBehaviour
     public GameObject AlertMsg;
     public GameObject EndPop;
     public GameObject[] Gompangs;
+
+    public GameObject bad;
+    public GameObject ending;
     private KeyCode[] keys = new KeyCode[] {
         KeyCode.G, KeyCode.F, KeyCode.D, KeyCode.F, KeyCode.A, KeyCode.F, KeyCode.C, KeyCode.F
     };
@@ -13,12 +16,13 @@ public class Gompang : MonoBehaviour
     public GameObject HintSet;
     private int index = 0;
     private void Start() {
+        EndPop.SetActive(false);
         StartCoroutine(Alertmsg());
     }
     private IEnumerator Alertmsg()
     {
         AlertMsg.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         AlertMsg.SetActive(false);
     }
     
@@ -32,7 +36,16 @@ public class Gompang : MonoBehaviour
         }
 
         if (index >= Gompangs.Length){
-            Invoke("EndGame", 0.7f);
+            StartCoroutine(last());
         }       
+    }
+
+    private IEnumerator last()
+    { 
+        EndPop.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        bad.SetActive(false);
+        ending.SetActive(true);
+        this.transform.parent.gameObject.SetActive(false);
     }
 }

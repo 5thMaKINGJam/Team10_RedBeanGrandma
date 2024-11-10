@@ -8,6 +8,7 @@ public class EndingManager : MonoBehaviour
     //전씬에 있는 GameManager.Instance 가 dontdestroyonload야. 그거 쓸 거야.
     [SerializeField] Sprite[] endings;
     [SerializeField] Image EndingImg;
+    [SerializeField] bool isHappy;
 
     [Header("Timing Settings")]
     [SerializeField] private float initialDisplayTime = 2f; // 초기 엔딩 이미지를 표시할 시간 (초)
@@ -26,6 +27,7 @@ public class EndingManager : MonoBehaviour
         StartCoroutine(EndingSequence());
     }
 
+
     private IEnumerator EndingSequence()
     {
         // 1. 초기 엔딩 이미지 표시 시간만큼 대기
@@ -37,19 +39,8 @@ public class EndingManager : MonoBehaviour
         // 3. 페이드 아웃 후 대기 시간만큼 대기
         yield return new WaitForSeconds(postFadeWaitTime);
 
-        // 4. 성공 여부 확인
-        bool isSuccess = false;
-        if (GameManager.Instance != null)
-        {
-            isSuccess = GameManager.Instance.GetSuccessOrNot();
-        }
-        else
-        {
-            isSuccess = false;
-        }
-
         // 5. 성공 여부에 따라 엔딩 이미지 변경
-        if (isSuccess)
+        if (isHappy)
         {
             EndingImg.sprite = endings[1];
         }
@@ -65,7 +56,7 @@ public class EndingManager : MonoBehaviour
         yield return new WaitForSeconds(finalDisplayTime);
 
         // 8. 게임 시작 씬으로 전환
-        SceneManager.LoadScene(startSceneName);
+        SceneManager.LoadScene("_1FirstScene");
     }
 
     private IEnumerator FadeImage(Image img, float startAlpha, float endAlpha, float duration)
