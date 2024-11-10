@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PeerManager : MonoBehaviour
+public class PeerManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] RectTransform peerTable;
     [SerializeField] GameObject peerObj;
@@ -35,7 +36,7 @@ public class PeerManager : MonoBehaviour
         {
             if (!isSuccess)
             {
-                face = (int)peer + (int)(peerSO.GetPeerIdx()/ 2);
+                face = (int)peer + (int)(peerSO.GetPeerIdx()/ 3);
                 Debug.Log($"face : {face}");
                 peerEmotion.sprite = GetImg(face);
             }
@@ -58,6 +59,21 @@ public class PeerManager : MonoBehaviour
         clonedObj.name=peer.ToString();
         clonedObj.transform.SetParent(peerTable, false);
 
+        // EventTrigger 추가
+    EventTrigger eventTrigger = clonedObj.AddComponent<EventTrigger>();
+
+    // OnPointerEnter 이벤트 추가
+    EventTrigger.Entry entryEnter = new EventTrigger.Entry();
+    entryEnter.eventID = EventTriggerType.PointerEnter;
+    entryEnter.callback.AddListener((data) => { OnPointerEnter((PointerEventData)data); });
+    eventTrigger.triggers.Add(entryEnter);
+
+    // OnPointerExit 이벤트 추가
+    EventTrigger.Entry entryExit = new EventTrigger.Entry();
+    entryExit.eventID = EventTriggerType.PointerExit;
+    entryExit.callback.AddListener((data) => { OnPointerExit((PointerEventData)data); });
+    eventTrigger.triggers.Add(entryExit);
+
         Sprite peerImg = GetImg((int)peer);
         Image imageComponent = clonedObj.GetComponentInChildren<Image>();
         imageComponent.sprite = peerImg;
@@ -68,4 +84,13 @@ public class PeerManager : MonoBehaviour
     {
         return peerSO.GetPeerImg(ingredIdx);
     }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        transform.localScale = Vector3.one;
+    }
+        
 }
