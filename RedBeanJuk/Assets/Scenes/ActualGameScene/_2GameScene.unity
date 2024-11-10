@@ -1059,6 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f84803d8d4b640889285601d203033e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderTimer: 60
   timerSlider: {fileID: 420441151}
   fill: {fileID: 1011824714}
   good: []
@@ -3399,7 +3400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521d47753e864a41b2342432dddc758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreLimit: 1
+  scoreLimit: 6
   timeTicker: {fileID: 1388396651}
   background: {fileID: 566471252}
   startPanel: {fileID: 985323188}

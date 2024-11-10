@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endings:
-  - {fileID: 21300000, guid: 593509df9789e3a459396319ad080688, type: 3}
+  - {fileID: 21300000, guid: b88c298fa025e224f8920506838d90c7, type: 3}
   - {fileID: 21300000, guid: fec41ada4e84e82499d927a473741572, type: 3}
   - {fileID: 21300000, guid: d649d1588ec383e4eac381e91408b676, type: 3}
   EndingImg: {fileID: 1797330025}

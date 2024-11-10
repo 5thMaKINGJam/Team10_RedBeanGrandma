@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Level Success!");
                 currentStage++;
                 GameClear = true;
-                if (currentStage < 5)
+                if (currentStage < 6)
                 {
                     background.ChangeBG(currentStage);
                     StartCoroutine(WaitAndReloadScene(2f));
