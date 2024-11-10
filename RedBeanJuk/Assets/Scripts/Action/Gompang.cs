@@ -4,7 +4,6 @@ using UnityEngine;
 public class Gompang : MonoBehaviour
 {
     public GameObject AlertMsg;
-    public GameObject EndPop;
     public GameObject[] Gompangs;
 
     public GameObject bad;
@@ -16,7 +15,6 @@ public class Gompang : MonoBehaviour
     public GameObject HintSet;
     private int index = 0;
     private void Start() {
-        EndPop.SetActive(false);
         StartCoroutine(Alertmsg());
     }
     private IEnumerator Alertmsg()
@@ -42,7 +40,6 @@ public class Gompang : MonoBehaviour
 
     private IEnumerator last()
     { 
-        EndPop.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         bad.SetActive(false);
         ending.SetActive(true);
