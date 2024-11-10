@@ -329,6 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   naembispawner: {fileID: 987360012}
+  stateSetter: {fileID: 0}
+  dialouge: {fileID: 0}
 --- !u!1 &420441148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,7 +2291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521d47753e864a41b2342432dddc758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeScript: {fileID: 0}
+  scoreLimit: 10
+  timeTicker: {fileID: 0}
+  startPanel: {fileID: 0}
 --- !u!1 &1234958737
 GameObject:
   m_ObjectHideFlags: 0
