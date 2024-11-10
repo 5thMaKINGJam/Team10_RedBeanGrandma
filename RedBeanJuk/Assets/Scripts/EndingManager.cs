@@ -24,11 +24,6 @@ public class EndingManager : MonoBehaviour
         EndingImg.color = new Color(EndingImg.color.r, EndingImg.color.g, EndingImg.color.b, 1f); // 알파값 1로 설정
 
         StartCoroutine(EndingSequence());
-        //n초 뒤에 fade out, m 초 기다림
-        //GameManager.Instance가 존재한다면, GameManager.GetSuccessOrNot(bool값)
-        //if(bool true) Ending.sprite = ending[1]
-        //else Ending.sprite = ending[2]
-        //몇 초 뒤에 다시 게임 시작 화면으로 loadscene
     }
 
     private IEnumerator EndingSequence()

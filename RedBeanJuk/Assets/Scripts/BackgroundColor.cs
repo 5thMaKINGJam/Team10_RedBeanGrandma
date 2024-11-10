@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class BackgroundColor : MonoBehaviour
@@ -19,14 +16,12 @@ public class BackgroundColor : MonoBehaviour
         stageColor[0].SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeBG(int idx)
     {
-        index = GameManager.Instance.GetStage();
-        while (index >= 2)
-        {
-            stageColor[index-1].SetActive(true);
-            stageColor[index-2].SetActive(false);
+        if (index >= 2)
+        { 
+            stageColor[index -2].SetActive(false);
+            stageColor[index - 1].SetActive(true);
         }
     }
 }

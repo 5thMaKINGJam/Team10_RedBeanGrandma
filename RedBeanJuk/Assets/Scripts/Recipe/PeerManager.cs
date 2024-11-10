@@ -1,16 +1,18 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PeerManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PeerManager : MonoBehaviour
 {
     [SerializeField] RectTransform peerTable;
-    [SerializeField] GameObject peerObj;
     [SerializeField] PeerSO peerSO;
     
     Transform child;
+    private void Awake()
+    {
+        child = peerTable.GetChild(0);
+        child.gameObject.SetActive(false);
+    }
 
     public void EvalPeerObj(bool isSuccess)
     {
@@ -24,7 +26,7 @@ public class PeerManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (peerTable != null && peerTable.childCount > 0)
         {
-            Destroy(child.gameObject);
+            child.gameObject.SetActive(false);
         }
     }
 
@@ -44,38 +46,13 @@ public class PeerManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         peerEmotion.SetNativeSize();
     }
 
-    private IEnumerator DestroyAfterDelay(GameObject obj, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (obj != null)
-        {
-            Destroy(obj);
-        }
-    }
-
     public void MakePeerObj(Define.Peer peer)
     {
-        GameObject clonedObj = Instantiate(peerObj);
-        clonedObj.name=peer.ToString();
-        clonedObj.transform.SetParent(peerTable, false);
-
-        // EventTrigger 추가
-    EventTrigger eventTrigger = clonedObj.AddComponent<EventTrigger>();
-
-    // OnPointerEnter 이벤트 추가
-    EventTrigger.Entry entryEnter = new EventTrigger.Entry();
-    entryEnter.eventID = EventTriggerType.PointerEnter;
-    entryEnter.callback.AddListener((data) => { OnPointerEnter((PointerEventData)data); });
-    eventTrigger.triggers.Add(entryEnter);
-
-    // OnPointerExit 이벤트 추가
-    EventTrigger.Entry entryExit = new EventTrigger.Entry();
-    entryExit.eventID = EventTriggerType.PointerExit;
-    entryExit.callback.AddListener((data) => { OnPointerExit((PointerEventData)data); });
-    eventTrigger.triggers.Add(entryExit);
+        child.gameObject.SetActive(true);
+        child.name=peer.ToString();
 
         Sprite peerImg = GetImg((int)peer);
-        Image imageComponent = clonedObj.GetComponentInChildren<Image>();
+        Image imageComponent = child.GetComponentInChildren<Image>();
         imageComponent.sprite = peerImg;
         imageComponent.SetNativeSize();
     }
@@ -84,13 +61,4 @@ public class PeerManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         return peerSO.GetPeerImg(ingredIdx);
     }
-
-    public void OnPointerEnter(PointerEventData eventData) {
-        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-    }
-
-    public void OnPointerExit(PointerEventData eventData) {
-        transform.localScale = Vector3.one;
-    }
-        
 }
