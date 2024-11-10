@@ -19,14 +19,19 @@ public class SceneManagerEx : MonoBehaviour
             bg.SetActive(false);
         }
     }
-    
+
     public void ActivateBackground(int index)
     {
         if (index >= 0 && index < backgrounds.Length)
         {
-            DeactivateBackground();
-            backgrounds[index-1].SetActive(true);
+            StartCoroutine(ActivateCoroutine(index));
         }
+    }
+
+    private IEnumerator ActivateCoroutine(int index) {
+        yield return new WaitForSeconds(2.1f);
+        DeactivateBackground();
+        backgrounds[index-1].SetActive(true);
     }
 
     // Update is called once per frame
