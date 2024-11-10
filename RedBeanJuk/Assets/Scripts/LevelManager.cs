@@ -60,6 +60,6 @@ public class LevelManager : MonoBehaviour
 
     private void ShuffleTrigger()
     {
-        shuffleButton.ShuffleIngred();
+        shuffleButton.ShuffleChildren();
     }
 }

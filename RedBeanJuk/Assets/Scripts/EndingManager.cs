@@ -22,6 +22,7 @@ public class EndingManager : MonoBehaviour
     void Start()
     {
         EndingImg.sprite = endings[0];
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Tiger);
         EndingImg.color = new Color(EndingImg.color.r, EndingImg.color.g, EndingImg.color.b, 1f); // 알파값 1로 설정
 
         StartCoroutine(EndingSequence());
