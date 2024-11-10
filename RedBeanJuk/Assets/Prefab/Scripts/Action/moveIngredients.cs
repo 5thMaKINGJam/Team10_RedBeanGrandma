@@ -41,6 +41,7 @@ public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandl
         }
         rectTransform.localScale = new Vector3(1f, 1f, 1f);
         rectTransform.anchoredPosition = Vector2.zero;
+        
     }
 
     private bool IsOverlapping(RectTransform rectA, RectTransform rectB) {

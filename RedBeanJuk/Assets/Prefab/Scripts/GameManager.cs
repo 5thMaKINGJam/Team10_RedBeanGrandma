@@ -137,4 +137,21 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
     }
     #endregion
+
+    private string SceneName;
+
+    void PlayBgmTrue()
+    {
+        SceneName = SceneManager.GetActiveScene().name;
+
+        if (SceneName == "_1FirstScene" || SceneName == "_1-2Story" || SceneName == "_2GameScene")
+        {
+            AudioManager.instance.PlayBGM(true);
+        }
+        else
+        {
+            AudioManager.instance.PlayBGM(false);
+        }
+        
+    }
 }

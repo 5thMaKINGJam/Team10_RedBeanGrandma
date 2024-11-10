@@ -344,6 +344,60 @@ RectTransform:
   m_AnchoredPosition: {x: 6.092, y: 0}
   m_SizeDelta: {x: 147.816, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1390207140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390207142}
+  - component: {fileID: 1390207141}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1390207141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390207140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f354875d4eed74d899f187c61ce1c60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmClip: {fileID: 8300000, guid: 94b0d16ce1bbb47f4bbb5229beaff503, type: 3}
+  bgmVolume: 0.2
+  sfxClip:
+  - {fileID: 8300000, guid: 60d4e899bbb0e4235a30a39db100bff5, type: 3}
+  - {fileID: 8300000, guid: d01edbae44b384462837757d4b211925, type: 3}
+  - {fileID: 8300000, guid: bc0916a0c0ca84c5eb4ccc4843c4ac01, type: 3}
+  - {fileID: 8300000, guid: c0aa62f9ad4cf4b3398ac3f6a205c16d, type: 3}
+  - {fileID: 8300000, guid: 30c60e354358c40379c7640cf67bd566, type: 3}
+  sfxVolume: 0.5
+  channels: 16
+--- !u!4 &1390207142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390207140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 948.6444, y: 473.99905, z: 8.223032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1505833897
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521d47753e864a41b2342432dddc758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeScript: {fileID: 0}
+  timeTicker: {fileID: 0}
+  startPanel: {fileID: 0}
 --- !u!4 &1595998448
 Transform:
   m_ObjectHideFlags: 0
