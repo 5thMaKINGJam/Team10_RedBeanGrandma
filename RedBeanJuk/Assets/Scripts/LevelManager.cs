@@ -48,7 +48,11 @@ public class LevelManager : MonoBehaviour
                 StartOrder(6);
                 isKeyboardActive = true;
                 break;
-
+            case 6:
+                onSubmitButton.onClick.AddListener(ShuffleTrigger);
+                StartOrder(6);
+                isKeyboardActive = true;
+                break;
             default: break;
         }
     }

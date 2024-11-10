@@ -9,7 +9,6 @@ public class EndingManager : MonoBehaviour
     //전씬에 있는 GameManager.Instance 가 dontdestroyonload야. 그거 쓸 거야.
     [SerializeField] Sprite[] endings;
     [SerializeField] Image EndingImg;
-    public GameObject Endpop;
     [SerializeField] bool isHappy;
 
     [Header("Timing Settings")]
@@ -24,7 +23,7 @@ public class EndingManager : MonoBehaviour
     void Start()
     {
         EndingImg.sprite = endings[0];
-        //AudioManager.instance.PlaySfx(AudioManager.Sfx.Tiger);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Tiger);
         EndingImg.color = new Color(EndingImg.color.r, EndingImg.color.g, EndingImg.color.b, 1f); // 알파값 1로 설정
 
         StartCoroutine(EndingSequence());
@@ -33,10 +32,9 @@ public class EndingManager : MonoBehaviour
 
     private IEnumerator EndingSequence()
     {
-        Endpop.SetActive(true);
         // 1. 초기 엔딩 이미지 표시 시간만큼 대기
         yield return new WaitForSeconds(initialDisplayTime);
-        Endpop.SetActive(false);
+        
         // 2. 페이드 아웃 효과 적용
         yield return StartCoroutine(FadeImage(EndingImg, 1f, 0f, fadeDuration));
 
