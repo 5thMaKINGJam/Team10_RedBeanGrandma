@@ -46,11 +46,11 @@ public class timerTicker : MonoBehaviour
     private void EndStage()
     {
         fill.SetActive(false);
-        GameManager.Instance.EndStage();
+        GameManager.Instance.EndStage(false);
     }
-    public void StopTimer()
+    public void StopTimer(bool isStop)
     {
-        stopTimer = true;
+        stopTimer = isStop;
     }
 }
 

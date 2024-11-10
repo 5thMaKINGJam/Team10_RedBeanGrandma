@@ -63,7 +63,6 @@ public class LevelManager : MonoBehaviour
 
     private void StartOrder(int maxIngred = 3)
     {
-        Debug.Log($"defaultMaxIngred : {defaultMaxIngred}, {maxIngred}");
         RecipeManager.ReciManager.SetMaxgred(maxIngred);
     }
 
@@ -76,7 +75,7 @@ public class LevelManager : MonoBehaviour
     {
         if (isDishWashActive && dishWash != null)
         {
-            RecipeManager.ReciManager.DeleteRecipe();
+            //RecipeManager.ReciManager.DeleteRecipe();
             dishWash.SetActive(true);
         }
     }
@@ -84,7 +83,7 @@ public class LevelManager : MonoBehaviour
     {
         if (isKeyboardActive && keyboard != null)
         {
-            RecipeManager.ReciManager.DeleteRecipe();
+            //RecipeManager.ReciManager.DeleteRecipe();
             keyboard.SetActive(true);
         }
     }

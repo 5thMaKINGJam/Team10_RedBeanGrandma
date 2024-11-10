@@ -35,9 +35,4 @@ public class Gompang : MonoBehaviour
             Invoke("EndGame", 0.7f);
         }       
     }
-
-    public void EndGame() {
-        GameManager.Instance.StopTime();
-        GameManager.Instance.LoadSuccessEnding();
-    }
 }

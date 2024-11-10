@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    private int scoreLimit = 10;
+    public int scoreLimit = 10;
     #region Singleton
     public static GameManager Instance;
     private LevelManager levelManager;
@@ -46,27 +47,29 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [SerializeField] timerTicker timeTicker;
-    public void StopTime()
+    [SerializeField] BackgroundColor background;
+    public void StopTime(bool isStop)
     { 
-        timeTicker.StopTimer();
+        timeTicker.StopTimer(isStop);
     }
-
 
     #region Bowl Score
     private int bowlScore = 0;
 
-    public void IncreaseBowl()
+    public int IncreaseBowl()
     {
         bowlScore++;
         Debug.Log($"bowlScore : {bowlScore}");
         if (bowlScore == scoreLimit)
         {
-            levelManager.KeyBoard();
+            Debug.Log("hi");
+            //levelManager.KeyBoard();
         }
         else if (bowlScore == (int)scoreLimit / 2)
         { 
-            levelManager.DishWash();
+            //levelManager.DishWash();
         }
+        return bowlScore;
     }
 
     public int BowlScore()
@@ -83,24 +86,35 @@ public class GameManager : MonoBehaviour
     }
 
     private bool GameClear = false;
-
-    public void EndStage()
+    private bool isDone = false;
+    public void EndStage(bool isSuccess)
     {
-        if (bowlScore >= scoreLimit)
+        StopTime(true);
+
+        if (!isDone)
         {
-            Debug.Log("Level Success!");
-            currentStage++;
-            GameClear = true;
-            if (currentStage < 6)
+            isDone = true;
+            if (isSuccess)
             {
-                StartCoroutine(WaitAndReloadScene(2f));
+                Debug.Log("Level Success!");
+                currentStage++;
+                GameClear = true;
+                if (currentStage < 6)
+                {
+                    background.ChangeBG(currentStage);
+                    StartCoroutine(WaitAndReloadScene(2f));
+                }
+                else
+                {
+                    LoadEndingScene();
+                }
             }
-        }
-        else
-        {
-            Debug.Log("Level Fail!");
-            GameClear = false;
-            LoadEndingScene();
+            else
+            {
+                Debug.Log("Level Fail!");
+                GameClear = false;
+                LoadEndingScene();
+            }
         }
     }
 
@@ -119,12 +133,6 @@ public class GameManager : MonoBehaviour
         LoadNextScene();
     }
 
-    public void LoadSuccessEnding()
-    {
-        GameClear = true;
-        LoadEndingScene();
-    }
-
     void LoadEndingScene()
     {
         Debug.Log($"LoadEndingScene {currentStage}");
@@ -133,8 +141,8 @@ public class GameManager : MonoBehaviour
 
     void LoadNextScene()
     {
-        Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
     #endregion
 

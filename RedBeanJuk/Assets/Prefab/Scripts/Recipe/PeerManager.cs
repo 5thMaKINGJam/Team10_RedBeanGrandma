@@ -1,15 +1,18 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PeerManager : MonoBehaviour
 {
     [SerializeField] RectTransform peerTable;
-    [SerializeField] GameObject peerObj;
     [SerializeField] PeerSO peerSO;
     
     Transform child;
+    private void Awake()
+    {
+        child = peerTable.GetChild(0);
+        child.gameObject.SetActive(false);
+    }
 
     public void EvalPeerObj(bool isSuccess)
     {
@@ -23,7 +26,7 @@ public class PeerManager : MonoBehaviour
     {
         if (peerTable != null && peerTable.childCount > 0)
         {
-            Destroy(child.gameObject);
+            child.gameObject.SetActive(false);
         }
     }
 
@@ -35,7 +38,7 @@ public class PeerManager : MonoBehaviour
         {
             if (!isSuccess)
             {
-                face = (int)peer + (int)(peerSO.GetPeerIdx()/ 2);
+                face = (int)peer + (int)(peerSO.GetPeerIdx()/ 3);
                 Debug.Log($"face : {face}");
                 peerEmotion.sprite = GetImg(face);
             }
@@ -43,23 +46,13 @@ public class PeerManager : MonoBehaviour
         peerEmotion.SetNativeSize();
     }
 
-    private IEnumerator DestroyAfterDelay(GameObject obj, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (obj != null)
-        {
-            Destroy(obj);
-        }
-    }
-
     public void MakePeerObj(Define.Peer peer)
     {
-        GameObject clonedObj = Instantiate(peerObj);
-        clonedObj.name=peer.ToString();
-        clonedObj.transform.SetParent(peerTable, false);
+        child.gameObject.SetActive(true);
+        child.name=peer.ToString();
 
         Sprite peerImg = GetImg((int)peer);
-        Image imageComponent = clonedObj.GetComponentInChildren<Image>();
+        Image imageComponent = child.GetComponentInChildren<Image>();
         imageComponent.sprite = peerImg;
         imageComponent.SetNativeSize();
     }

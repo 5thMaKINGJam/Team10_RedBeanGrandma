@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using static Define;
 
 public class IngredientManager : MonoBehaviour
@@ -32,7 +29,6 @@ public class IngredientManager : MonoBehaviour
             go = ingreidentTable.GetChild(i);
             ingredientImgSetter = go.GetComponent<IngredientImgSetter>();
             ingredImg = GetImg((int)recipeL[i]);
-            Debug.Log($"recipeL[i] {recipeL[i]} ingredImg {ingredImg}");
             ingredientImgSetter.SetIngredient(recipeL[i], ingredImg);
             go.gameObject.SetActive(true);
         }
