@@ -101,5 +101,12 @@ public class AudioManager : MonoBehaviour
         
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        
+    }
 }
