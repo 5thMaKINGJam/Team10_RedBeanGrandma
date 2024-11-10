@@ -87,18 +87,21 @@ public class IngredChecker : MonoBehaviour
     }
 
     int bowlScore = 0 ;
+    private bool canSubmit = true;
     public void OnClickSubmit()
     {
-        StartCoroutine(HoldSubmit());
+        if (canSubmit)
+        {
+            StartCoroutine(HoldSubmit());
+        }
     }
 
     private IEnumerator HoldSubmit()
-    {
-        while (true)
-        {
-            EvalSubmit();
-            yield return new WaitForSeconds(0.5f);
-        }
+    {   
+        canSubmit = false;
+        EvalSubmit();
+        yield return new WaitForSeconds(0.5f);
+        canSubmit= true;
     }
     private void EvalSubmit()
     {

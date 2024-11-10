@@ -50,7 +50,7 @@ public class timerTicker : MonoBehaviour
     private void EndStage()
     {
         fill.SetActive(false);
-        if (good != null)
+        if (good.Length >0)
         {
             foreach (var child in good)
             { 
