@@ -2026,7 +2026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: -82}
+  m_AnchoredPosition: {x: 265.01, y: -82}
   m_SizeDelta: {x: 46.382, y: 43.5807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1190307857
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2DC\uAC04 \uC548\uC5D0 \uD325\uC8FD 10\uADF8\uB987\uC744 \uB9CC\uB4E4\uBA74
+  m_text: "\uC2DC\uAC04 \uC548\uC5D0 \uD325\uC8FD 7\uADF8\uB987\uC744 \uB9CC\uB4E4\uBA74
     \uD1B5\uACFC!\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 686b5c3c43c68204ea628beac823b958, type: 2}
