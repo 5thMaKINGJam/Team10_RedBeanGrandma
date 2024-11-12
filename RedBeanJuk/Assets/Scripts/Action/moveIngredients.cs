@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class moveIngredients : MonoBehaviour, IPointerDownHandler, IEndDragHandler, IDragHandler 
 {
-    [SerializeField]float dragSpeed = 2.0f;
+    [SerializeField]float dragSpeed = 3.0f;
     [SerializeField] RectTransform bg;
 
     private RectTransform rectTransform;

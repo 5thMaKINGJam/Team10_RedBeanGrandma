@@ -125,12 +125,12 @@ public class GameManager : MonoBehaviour
 
     void LoadBadEndingScene()
     {
-        currentStage = 0;
+        currentStage = 1;
         SceneManager.LoadScene("_4Ending");
     }
     void LoadEndingScene()
     {
-        currentStage = 0;
+        currentStage = 1;
         SceneManager.LoadScene("_3Ending");
     }
 
