@@ -15,11 +15,11 @@ public class CustomerData
 
     private Queue<Ingredient> recipeQ = new Queue<Ingredient>();
 
-    private Queue<Ingredient> GetPeerRecipe(int maxIngredients)
+    public Queue<Ingredient> GetPeerRecipe(int maxIngredients, int peer)
     {
         recipeQ.Clear(); // Clear the queue at the beginning
 
-        int peerNum = GetPeer();
+        int peerNum = peer;
 
         PutBaseIngredient(peerNum);
         GetRandIngredient(maxIngredients);
@@ -49,15 +49,10 @@ public class CustomerData
         }
     }
 
-    private int GetPeer() // Get random peer
-    {
-        return UnityEngine.Random.Range(0, (int)Peer.MaxCount);
-    }
-
     private void PutBaseIngredient(int peer)
     {
         Peer peerEnum = (Peer)peer;
-        recipeQ.Enqueue(Ingredient.Pat);
+        recipeQ.Enqueue(Ingredient.Mabssal);
         recipeQ.Enqueue(peerIngredientMap[peerEnum]);
     }
 
